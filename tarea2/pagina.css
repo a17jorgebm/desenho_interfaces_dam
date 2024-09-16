@@ -1,0 +1,21 @@
+.container > *{
+    background-color: #cf5659;
+    padding: 15px;
+    margin: 15px;
+}
+
+.container{
+    background-color: inherit;
+}
+
+#cuerpo{
+    background-color: inherit;
+}
+
+#cuerpo  *{
+    background-color: #cf5659;
+}
+
+#articulo-entero > *{
+    background-color: #c0b766;
+}
