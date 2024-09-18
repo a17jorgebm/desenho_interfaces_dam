@@ -8,14 +8,21 @@
     background-color: inherit;
 }
 
+.container 
+
 #cuerpo{
     background-color: inherit;
 }
 
 #cuerpo  *{
     background-color: #cf5659;
+    margin: 0;
 }
 
 #articulo-entero > *{
     background-color: #c0b766;
+}
+
+#articulo-entero{
+    min-height: 40vh;
 }
