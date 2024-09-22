@@ -108,8 +108,6 @@ public class Main{
         gbcSection.gridwidth = 1;
         gbcSection.gridheight = 1;
         gbcSection.weighty = 1;
-
-        gbcSection.anchor = GridBagConstraints.
         section.add(header2, gbcSection);
 
         // ARTICLE
@@ -177,7 +175,7 @@ public class Main{
         frame.setMinimumSize(new Dimension(800,600));
         frame.setTitle("Ventana básica");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridBagLayout(1,3));
+        frame.setLayout(new GridBagLayout());
 
         GridBagConstraints gbc=new GridBagConstraints();
         gbc.fill=GridBagConstraints.BOTH;

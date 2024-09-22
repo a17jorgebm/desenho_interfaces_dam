@@ -47,7 +47,11 @@ Podese aplicar distintos layouts a os objectos que eredan de `Component`, como J
 Distribue os compoñentes nunha cuadricula, pero as celdas da cuadricula poden cambiar de tamaño flexiblemente, ademais que se poden agrandar as columna e filas.
 Polo que vin se sabes usar este ben podes aplicalo a practicamente todo.
 
-Usa a clase `GridBagConstraints` para indicar a configuración de posicion dos elementos.
+Usa a clase `GridBagConstraints` para indicar a configuración de posicion dos elementos. Indicar que `se pode usar o mismo objeto sempre`, xa que
+cando se aplica a un componente, o layout toma unha instantanea dos valores do obxeto nese momento e desvinculanse desa instancia en especifico.
+
+Esto polo que vin tamen aplica a todas as clases usadas nos atributos do GridBagConstraints, ainda que se modifique a clase despois non afecta se xa se fixo o .add()
+
 
 ````java
 import javax.swing.*;
@@ -133,8 +137,16 @@ gbc.achor=GridBagConstraints.LAST_LINE_START; // principio da ultima
 gbc.achor=GridBagConstraints.LAST_LINE_END; //fin da ultima
 ````
 
-### Indent
+### Insets
 Funciona como o `padding` en html. Añade espacio en blanco entre o componente e a celda na que esta.
-````java
 
+* `Insets(arriba,esquerda,abaixo,dereita)`
+````java
+import java.awt.*;
+
+gbc.insets=new Insets(10,0,10,0); // 10px arriba e abaixo
 ````
+
+❗❗ Recalcar que se se usa o mismo GridBagConstraints para varios compoñentes, se indicamos o `.insets` e mais tarde o queremos 
+quitar para outro compoñente NON se pode poñer a `null`, habería que facer un novo cos campos vacios. Ainda que se se quixera aforrar memoria e non crear tantos obxetos novos sería boa practica ter algúns xa definidos ou usar un solo e ilo modificando:
+* `new Insets(0,0,0,0)`
