@@ -108,6 +108,8 @@ public class Main{
         gbcSection.gridwidth = 1;
         gbcSection.gridheight = 1;
         gbcSection.weighty = 1;
+
+        gbcSection.anchor = GridBagConstraints.
         section.add(header2, gbcSection);
 
         // ARTICLE
@@ -175,26 +177,107 @@ public class Main{
         frame.setMinimumSize(new Dimension(800,600));
         frame.setTitle("Ventana básica");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new GridBagLayout());
+        frame.setLayout(new GridBagLayout(1,3));
 
         GridBagConstraints gbc=new GridBagConstraints();
         gbc.fill=GridBagConstraints.BOTH;
         gbc.weightx=1;
         gbc.weighty=1;
 
+        //header
         JPanel header=new JPanel();
-        header.setBorder(new MatteBorder(0,0,10,0,Color.WHITE));
-        header.setBackground(Color.getColor(ROJO));
+        header.setBorder(new MatteBorder(0,0,0,0,Color.WHITE));
+        header.setBackground(Color.RED);
         JLabel headerLabel=new JLabel("<header>");
-        headerLabel.setForeground(Color.WHITE);
+        //headerLabel.setForeground(Color.WHITE);
         header.add(headerLabel);
 
         gbc.gridx=0;
         gbc.gridy=0;
         gbc.gridheight=1;
         gbc.gridwidth=3;
-        //gbc.weighty=0;
+        gbc.weighty=0;
         frame.add(header,gbc);
+
+        //centro
+        JPanel centro=new JPanel();
+        centro.setLayout(new GridBagLayout());
+        centro.setBorder(new MatteBorder(10,0,10,0,Color.WHITE));
+        centro.setBackground(Color.BLUE);
+        JLabel centroLabel=new JLabel("centro");
+        //centro.add(centroLabel);
+        GridBagConstraints gbcCentro=new GridBagConstraints();
+        gbcCentro.fill=GridBagConstraints.BOTH;
+        gbcCentro.gridx=0;
+        gbcCentro.gridy=1;
+        gbcCentro.gridheight=2;
+        gbcCentro.gridwidth=5;
+        gbcCentro.weightx=1;
+        gbcCentro.weighty=1;
+
+        //izquierda
+        JPanel izquierda=new JPanel();
+        izquierda.setBackground(Color.RED);
+        JLabel izquierdaLabel=new JLabel("<izquierda>");
+        izquierda.add(izquierdaLabel);
+        GridBagConstraints izquierdaGbc=new GridBagConstraints();
+        izquierdaGbc.gridx=0;
+        izquierdaGbc.gridy=0;
+        izquierdaGbc.gridheight=2;
+        izquierdaGbc.gridwidth=1;
+        izquierdaGbc.weighty=1;
+        izquierdaGbc.weightx=1;
+        izquierdaGbc.fill=GridBagConstraints.BOTH;
+        centro.add(izquierda,izquierdaGbc);
+
+        //medio
+        JPanel medio=new JPanel();
+        medio.setBackground(Color.RED);
+        medio.setBorder(new MatteBorder(0,10,0,10, Color.WHITE));
+        JLabel medioLabel=new JLabel("<medio>");
+        medio.add(medioLabel);
+        GridBagConstraints medioGbc=new GridBagConstraints();
+        medioGbc.gridx=1;
+        medioGbc.gridy=0;
+        medioGbc.gridheight=2;
+        medioGbc.gridwidth=3;
+        medioGbc.weighty=1;
+        medioGbc.weightx=1;
+        medioGbc.fill=GridBagConstraints.BOTH;
+        centro.add(medio,medioGbc);
+
+        //derecha
+        JPanel derecha=new JPanel();
+        derecha.setBackground(Color.RED);
+        JLabel derechaLabel=new JLabel("<derecha>");
+        derechaLabel.setVerticalAlignment(SwingConstants.CENTER);
+        derecha.add(derechaLabel);
+        GridBagConstraints derechaGbc=new GridBagConstraints();
+        derechaGbc.gridx=4;
+        derechaGbc.gridy=0;
+        derechaGbc.gridheight=2;
+        derechaGbc.gridwidth=1;
+        derechaGbc.weighty=1;
+        derechaGbc.weightx=1;
+        derechaGbc.fill=GridBagConstraints.BOTH;
+        centro.add(derecha,derechaGbc);
+
+        frame.add(centro,gbcCentro);
+
+        //footer
+        JPanel footer=new JPanel();
+        footer.setLayout(new GridBagLayout());
+        footer.setBackground(Color.RED);
+        JLabel footerLabel=new JLabel("<footer>");
+        footer.add(footerLabel);
+        GridBagConstraints footerGbc=new GridBagConstraints();
+        footerGbc.gridx=0;
+        footerGbc.gridy=3;
+        footerGbc.gridheight=1;
+        footerGbc.gridwidth=3;
+        footerGbc.weightx=1;
+        footerGbc.fill=GridBagConstraints.HORIZONTAL;
+        frame.add(footer,footerGbc);
 
         frame.setVisible(true);
     }
