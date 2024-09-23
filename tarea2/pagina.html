@@ -10,34 +10,25 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <div class="container">
-        <header class="row">
-            &ltheader&gt
-        </header>
-    
-        <div id="cuerpo" class="row">
-            <nav class="col">
-                &ltnav&gt
-            </nav>
-            <section id="articulo-entero" class="col-6">
-                <div id="titulo-seccion-articulo">&ltsection&gt</div>
-                <header>
-                    &ltheader&gt
-                </header>
-                <article>
-                    &ltarticle&gt    
-                </article>
-                <footer>
-                    &ltfooter&gt
-                </footer>
-            </section>
-            <aside class="col">
-                &ltaside&gt
-            </aside>
+    <div class="page">
+        <div class="header panel">
+            &lt;header&gt;
         </div>
-        <footer class="row">
-            &ltfooter&gt
-        </footer>
+        <div class="main">
+            <div id="nav" class="panel">&lt;nav&gt;</div>
+            <div id="section" class="panel">
+                <div id="section-texto">&lt;section&gt;</div>
+                <div id="section-subpaneles">
+                    <div class="subpanel">&lt;header&gt;</div>
+                    <div class="subpanel" id="article-subpanel">&lt;article&gt;</div>
+                    <div class="subpanel" id="footer-subpanel">&lt;footer&gt;</div>
+                </div>
+            </div>
+            <div id="aside" class="panel">&lt;aside&gt;</div>
+        </div>
+        <div class="footer panel">
+            &lt;footer&gt;
+        </div>
     </div>
 </body>
 </html>

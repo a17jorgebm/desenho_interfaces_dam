@@ -1,28 +1,89 @@
-.container > *{
-    background-color: #cf5659;
-    padding: 15px;
-    margin: 15px;
+:root{
+    --rojo: #cd5c5c;
+    --amarillo: #bdb76b;
 }
-
-.container{
-    background-color: inherit;
+html,
+body{
+    height: 100%;
+    width: 100%;
 }
-
-.container 
-
-#cuerpo{
-    background-color: inherit;
+body *{
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
 }
-
-#cuerpo  *{
-    background-color: #cf5659;
-    margin: 0;
+.panel{
+    background-color: var(--rojo);
 }
-
-#articulo-entero > *{
-    background-color: #c0b766;
+.subpanel{
+    background-color: var(--amarillo);
 }
-
-#articulo-entero{
-    min-height: 40vh;
+.page{
+    margin: 5rem 5rem;
+    display: flex;
+    justify-content: center;
+    align-content: stretch;
+    flex-direction: column;
+    height: 80%;
 }
+    .page>*{
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: wrap;
+    }
+    .header{
+        flex-grow: 1;
+    }
+    .main{
+        flex-grow: 9;
+        display: flex;
+        flex-direction: row;
+        margin: 10px 0px;
+    }
+    .main>*{
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
+        flex-grow: 1;
+        height: 100%;
+    }
+        #section{
+            flex-grow: 4;
+            margin: 0px 10px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+            #section>*{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                flex-grow: 1;
+                width: 100%;
+            }
+            #section-subpaneles{
+                flex-grow: 20;
+                display: flex;
+                flex-direction: column;
+            }
+                #section-subpaneles .subpanel{
+                    display: flex;
+                    flex-grow: 1;
+                    width: 100%;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    align-items: center;
+                }
+                #section-subpaneles #article-subpanel{
+                    flex-grow: 9;
+                    margin: 5px 0px;
+                }
+                #section-subpaneles #footer-subpanel{
+                    flex-grow: 3;
+                }
+    .footer{
+        flex-grow: 1;
+    }

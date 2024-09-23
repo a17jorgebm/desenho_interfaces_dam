@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="es-ES">
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Contenedor e items Flex</title>
+		<style>
+			body{
+				font-family: Arial;
+			}
+
+			.contenedorFlex {
+				display: flex;
+				flex-direction:row;
+				background-color: #4EFCC8;
+				border: 1px solid black;
+				width:50%;
+				margin:auto;
+				font-size:30px;
+			}
+
+			.contenedorFlex > div {
+				border: 1px solid black;
+				background-color: #E356D8;
+				text-align:center;
+				margin: 10px;
+				min-width: 15%;
+				max-width:34%;
+				padding: 30px 0px;
+			}
+
+			h1, h2, p{
+				margin-left: 10px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<h1>Contenedor Flex</h1>
+		<p> Es el elemento "padre". Para convertir un elemento en un contenedor Flex tenemos que aplicarle la regla <strong>display:flex;</strong></p>
+		<h1>Items Flex</h1>
+		<p>Los elementos hijos directos del contenedor Flex se convierten automáticamente en <strong>items Flex</strong>. A los items Flex se le aplican ciertas propiedades, como por ejemplo que se mantengan en la misma línea. Al ser items Flex se le pueden aplicar ciertas transformaciones, como por ejemplo el cambio de eje o la orientación de éste.</p>
+		
+		<div class="contenedorFlex">
+			<p>Esto es un contenedor Flex</p>
+			<div>Esto es un item Flex (1)</div>
+			<div>Esto es un item Flex (2)</div>
+			<div>Esto es un item Flex (3)</div>
+		</div>
+		
+		<a href="index.html">Volver</a>
+	</body>
+</html>

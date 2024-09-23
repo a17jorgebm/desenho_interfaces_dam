@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="es-ES">
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>Propiedad grid-gap</title>
+		<style>
+			body{
+				font-family: Arial;
+			}
+
+			.contenedorRejilla {
+				display: grid;
+				grid-template-columns: auto auto auto;
+				background-color: #4EFCC8;
+				padding: 10px;
+			}
+
+			.forma1{
+				grid-gap: 50px;
+			}
+
+			.forma2{
+				grid-gap: 50px 25px;
+			}
+
+			.forma3{
+				grid-column-gap: 50px;
+			}
+
+			.forma4{
+				grid-row-gap: 75px;
+			}
+
+			.contenedorRejilla > div {
+				background-color: #E356D8;
+				border: 1px solid black;
+				padding: 20px;
+				font-size: 30px;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Propiedad <strong>grid-gap</strong></h1>
+
+		<p>Con la propiedad <strong>grid-gap</strong> podemos establecer el espacio entre filas y columnas. Hay varias formas de aplicar esta propiedad:</p>
+		<ul>
+			<li><strong>grid-gap: 50px;</strong> Define un espacio de 50 píxeles entre las columas y también entre las filas.</li>
+			<li><strong>grid-gap: 50px 25px;</strong> Define un espacio de 50 píxeles entre las filas y un espacio de 25 de píxeles entre las columnas.</li>
+			<li><strong>grid-column-gap: 50px;</strong> Define un espacio de 50 píxeles entre las columas.</li>
+			<li><strong>grid-row-gap: 75px;</strong> Define un espacio de 75 píxeles entre las filas.</li>
+		</ul>
+
+		<h2>grid-gap: 50px;</h2>
+		<div class="contenedorRejilla forma1">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+		</div>
+
+		<h2>grid-gap: 50px 25px;</h2>
+		<div class="contenedorRejilla forma2">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+		</div>
+
+		<h2>grid-column-gap: 50px;</h2>
+		<div class="contenedorRejilla forma3">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+		</div>
+
+		<h2>grid-row-gap: 75px;</h2>
+		<div class="contenedorRejilla forma4">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+		</div>
+		
+		<a href="index.html">Volver</a>
+	</body>
+</html>

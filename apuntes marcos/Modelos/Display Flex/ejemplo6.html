@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="es-ES">
+	<head>
+		<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<title>La propiedad flex-shrink</title>
+		<style>
+			body{
+				font-family: Arial;
+			}
+
+			.contenedorFlex {
+				display: flex;
+				flex-direction: row;
+				flex-wrap: wrap;
+				background-color: #4EFCC8;
+				border: 1px solid black;
+				width:90%;
+				margin:auto;
+				font-size:30px;
+			}
+
+			.contenedorFlex > div {
+				border: 1px solid black;
+				background-color: #E356D8;
+				text-align:center;
+				width:10%;
+				margin: 10px;
+				padding: 30px 0px;
+				flex-shrink:1;
+			}
+
+			.contenedorFlex > div + div {
+				flex-shrink: 0;
+			}
+
+			.contenedorFlex > div + div + div {
+				flex-shrink:1;
+			}
+
+			h1, h2, p{
+				margin-left: 10px;
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>Flex-shrink</h1>
+		<p>La propiedad flex-shrink especifica cuánto puede reducirse un ítem <strong>con respecto al resto de los items del contenedor</strong>. Por defecto flex-shrink es uno (flex-shrink:1;). En el siguiente ejemplo impedimos que el segundo elemento pueda reducirse en comparación con el resto de los elementos (flex-shrink:0;):</p>
+		<div class="contenedorFlex">
+			<div>1</div>
+			<div>2</div>
+			<div>3</div>
+			<div>4</div>
+			<div>5</div>
+			<div>6</div>
+			<div>7</div>
+			<div>8</div>
+			<div>9</div>
+			<div>10</div>
+			<div>11</div>
+			<div>12</div>
+			<div>13</div>
+			<div>14</div>
+			<div>15</div>
+		</div>
+		<a href="index.html">Volver</a>
+	</body>
+</html>

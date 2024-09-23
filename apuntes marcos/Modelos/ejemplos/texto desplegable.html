@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Texto desplegable</title>
+		<style>
+			/* Estilos a aplicar por defecto al elemento contenedor */
+			.contenedor {
+				position: relative;
+				display: inline-block;
+			}
+
+			/* Estilos a aplicar por defecto al texto desplegable */
+			.desplegable {
+				display: none;
+				position: absolute;
+				background-color: ivory;
+				min-width: 160px;
+				border: 1px solid black;
+				padding: 12px 16px;
+				z-index: 1;
+			}
+
+			/* Estilos a aplicar al texto desplegable cuando pasamos el puntero por encima del contenedor */
+			.contenedor:hover .desplegable {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Texto desplegable</h2>
+		<p>Al mover el puntero por encima del texto, éste desplegará un cuadro de texto.</p>
+
+		<div class="contenedor">
+			<span>Pasa el puntero por encima de mí.</span>
+			<div class="desplegable">
+				<p>¡Sorpresa!</p>
+			</div>
+		</div>
+	</body>
+</html>

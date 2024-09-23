@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			Ejemplo de uso de la propiedad clear
+		</title>
+		<style>
+			div {
+				border: 1px solid black;
+			}
+
+			div.clase1 {
+				float: left;
+				width: 250px;
+				height: 120px;
+				background-color: rgba(179, 255, 255, 0.5);
+			}
+
+			div.clase2 {
+				height:40px;
+				background-color: rgba(179, 255, 102, 0.5);
+			}
+
+			div.clase3 {
+				float: right;
+				width: 250px;
+				height: 180px;
+				background-color: rgba(255, 212, 128, 0.5);
+			}
+
+			div.clase4 {
+				height: 40px;
+				clear: left;
+				background-color: rgba(255, 153, 255, 0.5);
+			}
+
+			div.clase5 {
+				height: 40px;
+				clear: both;
+				background-color: rgba(255, 153, 255, 0.5);
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Comportamiento sin usar <strong>clear</strong></h2>
+		<div class="clase1">Este es el primer &lt;div&gt;, con comportamiento float: left;</div>
+		<div class="clase2">Este es el segundo &lt;div&gt;. Como el primer &lt;div&gt; establece que el texto fluya a la derecha de él se produce este comportamiento.</div>
+		<br/><br/><br/><br/><br/>
+		<h2>Comportamiento al usar <strong>clear: left o right</strong></h2>
+		<div class="clase1">Este es el primer &lt;div&gt;, con comportamiento float: left;</div>
+		<div class="clase3">Este es el tercer &lt;div&gt;, con comportamiento float: right;</div>
+		<div class="clase4">Este es el cuarto &lt;div&gt;, al usar clear:left evita que cualquier elemento pueda fluir a su izquierda, pero no a su derecha</div>
+		<br/><br/><br/><br/><br/>
+		<h2>Comportamiento al usar <strong>clear: both</strong></h2>
+		<div class="clase1">Este es el primer &lt;div&gt;, con comportamiento float: left;</div>
+		<div class="clase3">Este es el tercer &lt;div&gt;, con comportamiento float: right;</div>
+		<div class="clase5">Este es el quinto &lt;div&gt;, al usar clear:both evita que cualquier elemento pueda fluir a su izquierda o a su derecha</div>
+	</body>
+</html>

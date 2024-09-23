@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>
+			Ejemplo gradientes
+		</title>
+		<style>
+			body {
+				background-color: silver;
+			}
+		
+			div {
+				width: 400px;
+				height: 100px;
+				border: 1px solid black;
+				margin-top:20px;
+			}
+			/* Lineal vertical */
+			.grad1 {
+				background-image: linear-gradient(cyan, orange);
+			}
+			/* Lineal horizontal */
+			.grad2 {
+				background-image: linear-gradient(to right, cyan, orange);
+			}
+			/* Lineal diagonal */
+			.grad3 {
+				background-image: linear-gradient(to bottom left, cyan, orange);
+			}
+			/* Lineal horizontal con varios colores */
+			.grad4 {
+				background-image: linear-gradient(to right, cyan, orange, red, blue, lime);
+			}
+			/* Lineal horizontal con código RGBA */
+			.grad5 {
+				background-image: linear-gradient(to right, rgba(0,255,0,0.5), rgba(0,0,255,0.5));
+			}
+			/* Radial */
+			.grad6 {
+				background-image: radial-gradient(red, blue);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="grad1">
+			El comportamiento por defecto es desde arriba hacia abajo.
+		</div>
+
+		<div class="grad2">
+			Podemos dirigirlo de izquierda a derecha con <q>to right</q>
+		</div>
+
+		<div class="grad3">
+			O podemos usar diagonales como <q>to bottom left</q>
+		</div>
+
+		<div class="grad4">
+			background-image: linear-gradient(to right, cyan, orange, red, blue, lime);
+		</div>
+
+		<div class="grad5">
+			background-image: linear-gradient(to right, rgba(0,255,0,0.5), rgba(0,0,255,0.5));
+		</div>
+
+		<div class="grad6">
+			background-image: radial-gradient(red, blue);
+		</div>
+	</body>
+</html>
