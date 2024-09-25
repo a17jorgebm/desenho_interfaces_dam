@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer 1 grid</title>
+    <style>
+        :root{
+            --color-azul: #0000ff;
+            --color-blanco: #ffffff;
+            --color-rojo: #ff0000;
+        }
+        html,
+        body{
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+        body{
+            display: grid;
+            grid-template-columns: repeat(3,1fr)
+        }
+        .azul{
+            background-color: var(--color-azul);
+        }
+        .rojo{
+            background-color: var(--color-rojo);
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="azul"></div>
+    <div class="blanco"></div>
+    <div class="rojo"></div>
+</body>
+</html>
