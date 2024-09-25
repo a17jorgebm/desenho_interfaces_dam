@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer 2 flex</title>
+    <style>
+        :root{
+            --amarillo: #f0e68c;
+            --azul-claro: #e0ffff;
+        }
+        html,
+        body{
+            margin: 0;
+        }
+        #contenedor{
+            display: flex;
+            flex-direction: row;
+            height: calc(100vh - 100px);
+            margin: 50px;
+        }
+        #contenedor > *{
+            flex-grow: 1;
+        }
+        .amarillo{
+            background-color: var(--amarillo);
+        }
+        .azul-claro{
+            background-color: var(--azul-claro);
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <div class="amarillo"></div>
+        <div class="azul-claro"></div>
+    </div>
+</body>
+</html>
