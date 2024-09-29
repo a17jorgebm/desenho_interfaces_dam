@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejer 3 flex</title>
+    <style>
+        :root{
+            --rojo: red;
+            --verde: green;
+            --azul: blue;
+            --violeta: purple;
+        }
+        body{
+            margin: 0;
+        }
+        main{
+            margin: 100px;
+            padding: 10px;
+            border: 1px solid black;
+            height: calc(100vh - 200px - 2px - 20px);
+            width: calc(100% - 200px - 2px - 20px);
+            display: flex;
+            flex-direction: row;
+        }
+            main > .columna:not(:first-child){
+                margin-left: 10px;
+            }
+            .columna{
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+            }
+                /*
+                    NON ten un corportamento como en grid ou float,
+                    xa que flex restalle este margin ao elemento que o ten,
+                    parece ser que non o distribue como fago eu nos demais
+
+                    TODO consultar esta duda
+                    o que non entendo moi ben (falando da columna da dereita)
+                    é porque ao elemento azul lle añade 2.5px e lle resta 2.5 ao violeta (con respecto aos outros displays)
+                    en total suma 5px de espacio, nos os 10px de margin-top que se asignou
+                */
+                .columna > *:not(:first-child){
+                    margin-top: 10px;
+                }
+                .columna > *{
+                    flex-grow: 1;
+                }
+                .verde{
+                    background-color: var(--verde);
+                }
+                .rojo{
+                    background-color: var(--rojo);
+                }
+                .azul{
+                    background-color: var(--azul);
+                    flex-grow: 0.25;
+                }
+                .violeta{
+                    background-color: var(--violeta);
+                    flex-grow: 0.75;
+                }
+    </style>
+</head>
+<body>
+<main>
+    <div class="columna esquerda">
+        <div class="verde"></div>
+        <div class="rojo"></div>
+    </div>
+    <div class="columna dereita">
+        <div class="azul"></div>
+        <div class="violeta"></div>
+    </div>
+</main>
+</body>
+</html>

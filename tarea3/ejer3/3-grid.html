@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejer 3 grid</title>
+    <style>
+        :root{
+            --rojo: red;
+            --verde: green;
+            --azul: blue;
+            --violeta: purple;
+        }
+        body{
+            margin: 0;
+        }
+        main{
+            margin: 100px;
+            padding: 10px;
+            border: 1px solid black;
+            height: calc(100vh - 200px - 2px - 20px);
+            width: calc(100% - 200px - 2px - 20px);
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 10px;
+        }
+            .columna{
+                display: grid;
+                gap: 10px;
+            }
+                .columna.esquerda{
+                    grid-template-rows: repeat(2,1fr);
+                }
+                .columna.dereita{
+                    grid-template-rows: calc(25% - 5px) calc(75% - 5px);
+                }
+                    .verde{
+                        background-color: var(--verde);
+                    }
+                    .rojo{
+                        background-color: var(--rojo);
+                    }
+                    .azul{
+                        background-color: var(--azul);
+                    }
+                    .violeta{
+                        background-color: var(--violeta);
+                    }
+    </style>
+</head>
+<body>
+<main>
+    <div class="columna esquerda">
+        <div class="verde"></div>
+        <div class="rojo"></div>
+    </div>
+    <div class="columna dereita">
+        <div class="azul"></div>
+        <div class="violeta"></div>
+    </div>
+</main>
+</body>
+</html>

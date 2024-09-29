@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejer 2 float</title>
+    <style>
+        :root{
+            --amarillo: #f0e68c;
+            --azul-claro: #e0ffff;
+        }
+
+        body{
+            margin: 0;
+        }
+        #contenedor{
+            margin: 50px;
+            height: calc(100vh - 100px);
+            width: calc(100% - 100px);
+        }
+
+        .franja{
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        .amarillo{
+            background-color: var(--amarillo);
+        }
+        .azul-claro{
+            background-color: var(--azul-claro);
+        }
+    </style>
+</head>
+<body>
+<div id="contenedor">
+    <div class="franja amarillo"></div>
+    <div class="franja azul-claro"></div>
+</div>
+</body>
+</html>
