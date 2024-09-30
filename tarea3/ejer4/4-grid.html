@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejer 4 grid</title>
+    <style>
+        :root{
+            --naranja: #ff7f50;
+            --azul: #6495ed;
+        }
+        body{
+            margin: 0;
+        }
+        main{
+            margin: 100px;
+            padding: 10px;
+            border: 2px dotted black;
+            height: calc(100vh - 200px - 20px - 4px);
+            display: grid;
+            grid-template-rows: repeat(2,1fr);
+            gap: 10px;
+        }
+        .naranja{
+            background-color: var(--naranja);
+        }
+        .azul{
+            background-color: var(--azul);
+        }
+    </style>
+</head>
+<body>
+<main>
+    <div class="row naranja"></div>
+    <div class="row azul"></div>
+</main>
+</body>
+</html>

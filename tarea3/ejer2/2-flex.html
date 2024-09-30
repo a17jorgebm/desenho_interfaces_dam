@@ -8,14 +8,16 @@
         :root{
             --amarillo: #f0e68c;
             --azul-claro: #e0ffff;
-            --rojo-borde: #d39191;
+            --rojo-borde-puntos: #8b0000;
+            --rojo-borde: #ce6969;
+            --verde-borde: #85926a;
         }
         html,
         body{
             margin: 0;
         }
         #contenedor{
-            border: 2px dotted var(--rojo-borde);
+            border: 2px dotted var(--rojo-borde-puntos);
             display: flex;
             flex-direction: row;
             height: calc(100vh - 100px - 4px - 100px);
@@ -27,9 +29,11 @@
         }
         .amarillo{
             background-color: var(--amarillo);
+            border: 1px solid var(--verde-borde);
         }
         .azul-claro{
             background-color: var(--azul-claro);
+            border: 1px solid var(--rojo-borde);
         }
     </style>
 </head>

@@ -8,7 +8,9 @@
         :root{
             --amarillo: #f0e68c;
             --azul-claro: #e0ffff;
-            --rojo-borde: #d39191;
+            --rojo-borde-puntos: #8b0000;
+            --rojo-borde: #ce6969;
+            --verde-borde: #85926a;
         }
 
         body{
@@ -23,6 +25,7 @@
         }
 
         .franja{
+            box-sizing: border-box;
             width: 50%;
             height: 100%;
             float: left;
@@ -30,9 +33,11 @@
 
         .amarillo{
             background-color: var(--amarillo);
+            border: 1px solid var(--verde-borde);
         }
         .azul-claro{
             background-color: var(--azul-claro);
+            border: 1px solid var(--rojo-borde);
         }
     </style>
 </head>

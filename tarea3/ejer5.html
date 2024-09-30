@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejer 5 flex</title>
+    <style>
+        :root{
+            --verde-claro: #4ceba9;
+            --rojo: #fe0000;
+            --naranja: #ff6d00;
+            --rosa: #f000ff;
+            --verde-oscuro: #387800;
+            --azul: #01509f;
+            --marron: #ca9e61;
+        }
+        body{
+            border: 0
+        }
+        main{
+            margin: 100px;
+            height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+            #esquerda{
+                flex-grow: 2;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+                #esquerda-arriba{
+                    flex-grow: 1;
+                }
+                #esquerda-abaixo{
+                    flex-grow: 1;
+                    display: flex;
+                    flex-direction: row;
+                    gap: 15px;
+                }
+                    #esquerda-abaixo-parexa{
+                        flex-grow: 0.4;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 15px;
+                    }
+                        #rojo{
+                            flex-grow: 0.3;
+                        }
+                        #naranja{
+                            flex-grow: 0.7;
+                        }
+                    #esquerda-abaixo-rosa{
+                        flex-grow: 0.6;
+                    }
+            #dereita{
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+                #verde{
+                    flex-grow: 0.3;
+                }
+                #azul{
+                    flex-grow: 0.6;
+                }
+                #marron{
+                    flex-grow: 0.1;
+                }
+
+        /* colores */
+        #esquerda-arriba{ background-color: var(--verde-claro); }
+        #rojo{ background-color: var(--rojo); }
+        #naranja{ background-color: var(--naranja); }
+        #esquerda-abaixo-rosa{ background-color: var(--rosa); }
+        #verde{ background-color: var(--verde-oscuro); }
+        #azul{ background-color: var(--azul); }
+        #marron{ background-color: var(--marron); }
+
+    </style>
+</head>
+<body>
+<main>
+    <div id="esquerda">
+        <div id="esquerda-arriba"></div>
+        <div id="esquerda-abaixo">
+            <div id="esquerda-abaixo-parexa">
+                <div id="rojo"></div>
+                <div id="naranja"></div>
+            </div>
+            <div id="esquerda-abaixo-rosa"></div>
+        </div>
+    </div>
+    <div id="dereita">
+        <div id="verde"></div>
+        <div id="azul"></div>
+        <div id="marron"></div>
+    </div>
+</main>
+</body>
+</html>
