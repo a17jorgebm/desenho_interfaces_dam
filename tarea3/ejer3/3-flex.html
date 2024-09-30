@@ -29,20 +29,8 @@
                 flex-grow: 1;
                 display: flex;
                 flex-direction: column;
+                gap: 10px;
             }
-                /*
-                    NON ten un corportamento como en grid ou float,
-                    xa que flex restalle este margin ao elemento que o ten,
-                    parece ser que non o distribue como fago eu nos demais
-
-                    TODO consultar esta duda
-                    o que non entendo moi ben (falando da columna da dereita)
-                    é porque ao elemento azul lle añade 2.5px e lle resta 2.5 ao violeta (con respecto aos outros displays)
-                    en total suma 5px de espacio, nos os 10px de margin-top que se asignou
-                */
-                .columna > *:not(:first-child){
-                    margin-top: 10px;
-                }
                 .columna > *{
                     flex-grow: 1;
                 }
@@ -54,10 +42,12 @@
                 }
                 .azul{
                     background-color: var(--azul);
+                    flex-basis: calc(25% - 5px); /* define o tamaño do contedor antes de que se aplique flex-grow */
                     flex-grow: 0.25;
                 }
                 .violeta{
                     background-color: var(--violeta);
+                    flex-basis: calc(75% - 5px);
                     flex-grow: 0.75;
                 }
     </style>
