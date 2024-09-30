@@ -35,50 +35,64 @@ public class Posicionamiento5 {
 
             JPanel esquerda=new JPanel();
             esquerda.setLayout(new GridBagLayout());
-            esquerda.setBackground(Color.decode(VERDE_CLARO));
             insets.set(0,0,0,20);
-            cambiarValoresGridBagConstraints(c,1,1,0,0,0,0,insets);
+            cambiarValoresGridBagConstraints(c,2.5,1,0,0,1,1,insets);
             main.add(esquerda, c);
 
-            /*
                 //verde claro
                 JPanel verde=new JPanel();
                 insets.set(0,0,20,0);
-                cambiarValoresGridBagConstraints(c,1,1,0,0,0,0,insets);
+                cambiarValoresGridBagConstraints(c,1,1,0,0,1,1,insets);
                 verde.setBackground(Color.decode(VERDE_CLARO));
                 esquerda.add(verde, c);
 
                 JPanel esqAbaixo=new JPanel();
                 esqAbaixo.setLayout(new GridBagLayout());
                 insets.set(0,0,0,0);
-                cambiarValoresGridBagConstraints(c,1,1,0,1,0,0,insets);
+                cambiarValoresGridBagConstraints(c,1,1,0,1,1,1,insets);
+                esquerda.add(esqAbaixo, c);
 
                     JPanel rojo=new JPanel();
                     insets.set(0,0,15,0);
-                    cambiarValoresGridBagConstraints(c,0.4,0.3,0,0,0,0,insets);
+                    cambiarValoresGridBagConstraints(c,0.4,0.3,0,0,1,1,insets);
                     rojo.setBackground(Color.decode(ROJO));
                     esqAbaixo.add(rojo, c);
 
                     JPanel naranja=new JPanel();
                     insets.set(0,0,0,0);
-                    cambiarValoresGridBagConstraints(c,0.4,0.7,0,1,0,0,insets);
+                    cambiarValoresGridBagConstraints(c,0.4,0.7,0,1,1,1,insets);
                     naranja.setBackground(Color.decode(NARANJA));
                     esqAbaixo.add(naranja, c);
 
                     JPanel rosa=new JPanel();
                     insets.set(0,15,0,0);
-                    cambiarValoresGridBagConstraints(c,0.6,1,1,0,0,0,insets);
+                    cambiarValoresGridBagConstraints(c,0.6,1,1,0,1,2,insets);
                     rosa.setBackground(Color.decode(ROSA));
                     esqAbaixo.add(rosa, c);
 
-                esquerda.add(esqAbaixo, c);
-*/
             JPanel dereita=new JPanel();
             dereita.setLayout(new GridBagLayout());
-            dereita.setBackground(Color.decode(VERDE_OSCURO));
             insets.set(0,0,0,0);
-            cambiarValoresGridBagConstraints(c,1,1,1,0,0,0,insets);
+            cambiarValoresGridBagConstraints(c,1,1,1,0,1,1,insets);
             main.add(dereita, c);
+
+                JPanel verdeOscuro=new JPanel();
+                verdeOscuro.setBackground(Color.decode(VERDE_OSCURO));
+                insets.set(0,0,0,0);
+                cambiarValoresGridBagConstraints(c,1,0.2,0,0,1,1,insets);
+                dereita.add(verdeOscuro, c);
+
+                JPanel azul=new JPanel();
+                azul.setBackground(Color.decode(AZUL));
+                insets.set(20,0,20,0);
+                cambiarValoresGridBagConstraints(c,1,0.7,0,1,1,1,insets);
+                dereita.add(azul, c);
+
+                JPanel marron=new JPanel();
+                marron.setBackground(Color.decode(MARRON));
+                insets.set(0,0,0,0);
+                cambiarValoresGridBagConstraints(c,1,0.1,0,2,1,1,insets);
+                dereita.add(marron, c);
 
         ventana.revalidate();
         ventana.repaint();
