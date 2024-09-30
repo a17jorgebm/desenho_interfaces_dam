@@ -8,16 +8,19 @@
         :root{
             --amarillo: #f0e68c;
             --azul-claro: #e0ffff;
+            --rojo-borde: #d39191;
         }
         html,
         body{
             margin: 0;
         }
         #contenedor{
+            border: 2px dotted var(--rojo-borde);
             display: flex;
             flex-direction: row;
-            height: calc(100vh - 100px);
+            height: calc(100vh - 100px - 4px - 100px);
             margin: 50px;
+            padding: 50px;
         }
         #contenedor > *{
             flex-grow: 1;

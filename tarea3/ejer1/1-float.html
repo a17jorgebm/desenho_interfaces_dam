@@ -10,17 +10,18 @@
             --color-blanco: #ffffff;
             --color-rojo: #ff0000;
         }
-        html,
         body{
             margin: 0;
         }
-        body{
-            overflow: hidden;
-        }
-        body>*{
-            float:left;
-            width: 33.33%;
+        main{
+            box-sizing: border-box;
             height: 100vh;
+            border: 2px dotted black;
+        }
+        main > *{
+            float: left;
+            width: calc(100% / 3);
+            height: 100%;
         }
         .azul{
             background-color: var(--color-azul);
@@ -28,13 +29,13 @@
         .rojo{
             background-color: var(--color-rojo);
         }
-
-
     </style>
 </head>
 <body>
-    <div class="azul"></div>
-    <div class="blanco"></div>
-    <div class="rojo"></div>
+    <main>
+        <div class="azul"></div>
+        <div class="blanco"></div>
+        <div class="rojo"></div>
+    </main>
 </body>
 </html>

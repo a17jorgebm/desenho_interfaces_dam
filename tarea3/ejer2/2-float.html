@@ -8,15 +8,18 @@
         :root{
             --amarillo: #f0e68c;
             --azul-claro: #e0ffff;
+            --rojo-borde: #d39191;
         }
 
         body{
             margin: 0;
         }
         #contenedor{
+            border: 2px dotted var(--rojo-borde);
             margin: 50px;
-            height: calc(100vh - 100px);
-            width: calc(100% - 100px);
+            padding: 50px;
+            height: calc(100vh - 100px - 4px - 100px);
+            width: calc(100% - 100px - 4px - 100px);
         }
 
         .franja{
