@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura basica v2</title>
+    <style>
+        :root{
+            --rojo: #cb5b5e;
+            --azul: #7abcde;
+        }
+        body{
+            margin: 0;
+            font-weight: bold;
+            color: white;
+            font-size: 1.05em;
+        }
+        main{
+            margin: 100px;
+            height: calc(100vh - 200px);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+            .seccion{
+                background-color: var(--rojo);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #cabeceira{
+                flex-grow: 0.2;
+            }
+            #medio{
+                flex-grow: 0.7;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+            }
+                #medio #esquerda{
+                    flex-grow: 0.2;
+                    display: flex;
+                    flex-basis: 20%;
+                    text-align: center;
+                }
+                #medio #dereita{
+                    flex-grow: 0.8;
+                    display: flex;
+                    flex-basis: 80%;
+                    flex-direction: column;
+                    gap: 10px;
+                    padding: 20px 10px 40px 10px;
+                    align-items: stretch;
+                }
+                    .artigo{
+                        background-color: var(--azul);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    #medio #dereita #header-artigo{
+                        flex-grow: 0.2;
+                    }
+                    #medio #dereita #corpo-artigo{
+                        flex-grow: 0.5;
+                    }
+                    #medio #dereita #footer-artigo{
+                        flex-grow: 0.3;
+                    }
+            #pe{
+                flex-grow: 0.1;
+            }
+    </style>
+</head>
+<body>
+<main>
+    <div id="cabeceira" class="seccion">cabeceira</div>
+    <div id="medio">
+        <div id="esquerda" class="seccion">menu de navegación</div>
+        <div id="dereita" class="seccion">
+            <div id="header-artigo" class="artigo">artigo</div>
+            <div id="corpo-artigo" class="artigo">artigo</div>
+            <div id="footer-artigo" class="artigo">artigo</div>
+        </div>
+    </div>
+    <div id="pe" class="seccion">pé</div>
+</main>
+</body>
+</html>
