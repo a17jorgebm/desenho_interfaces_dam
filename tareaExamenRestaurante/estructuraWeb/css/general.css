@@ -1,0 +1,61 @@
+:root{
+    --verde-oscuro: #012611;
+    --gris-oscuro: #1D2621;
+    --verde-claro: #4EA66D;
+    --beige: #F2F2DC;
+    --negro: #0D0D0D;
+
+    /* tamaño letras */
+    --base-size-font: 14px;
+    --normal-font-size: 1em;
+    --pequenha-font-size: 0.75em;
+    --grande-font-size: 1.71em;
+    --titulo-font-size: 2.57em;
+
+    /* fuentes */
+    --fuente-lora: 'Lora', 'Garamond', 'Times New Roman', Times, serif;
+    --fuente-playfair: 'Playfair Display', 'Palatino Linotype', 'Book Antiqua', Palatino, serif;
+}
+
+body{
+    margin: 0;
+    font-size: var(--base-size-font);
+}
+
+
+/* footer */
+footer > *{
+    width: 100%;
+}
+    /* footer contenido */
+footer #contenedor-contenido-footer{
+    background-color: var(--verde-oscuro);
+    height: 100px;
+}
+
+    /* END footer contenido */
+
+
+    /* footer copyright */
+    footer #copyright{
+        font-family: var(--fuente-lora);
+        background-color: var(--negro);
+        bottom: 0px;
+        color: white;
+        font-size: var(--pequenha-font-size);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    footer #copyright #linea-horizontal-copyright{
+        width: 1px;
+        height: auto;
+        background-color: white;
+        margin: 0px 6px;
+    }
+    /* END footer copyright */
+
+/* END footer */
