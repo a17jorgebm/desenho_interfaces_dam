@@ -8,7 +8,7 @@
     /* tamaño letras */
     --base-size-font: 14px;
     --normal-font-size: 1em;
-    --pequenha-font-size: 0.75em;
+    --pequenha-font-size: 0.85em;
     --grande-font-size: 1.71em;
     --titulo-font-size: 2.57em;
 
@@ -22,17 +22,61 @@ body{
     font-size: var(--base-size-font);
 }
 
+#logos-and-datos-contacto{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.logo-redes{
+    width: 1.6rem;
+}
+
 
 /* footer */
 footer > *{
     width: 100%;
+    box-sizing: border-box;
+    color: white;
+    font-family: var(--fuente-lora);
+
 }
     /* footer contenido */
-footer #contenedor-contenido-footer{
-    background-color: var(--verde-oscuro);
-    height: 100px;
-}
+    footer #contenedor-contenido-footer{
+        font-size: var(--normal-font-size);
+        background-color: var(--verde-oscuro);
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 5% 5% 5% 15%;
+    }
 
+        footer #contenedor-contenido-footer #d1{
+            width: 300px;
+        }
+            footer #contenedor-contenido-footer #d1 #contenedor-footer-logo{
+                border-bottom: 1px white solid;
+            }
+                footer #contenedor-contenido-footer #d1 #contenedor-footer-logo img{
+                    width: 100px;
+                }
+            footer #contenedor-contenido-footer #d1 #contenedor-footer-texto{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                margin-top: 20px;
+            }
+                footer #contenedor-contenido-footer #d1 #contenedor-footer-texto .redes{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: left;
+                    align-items: center;
+                    gap: 10px;
+                }
+                    footer #contenedor-contenido-footer #d1 #contenedor-footer-texto .redes img{
+
+                    }
     /* END footer contenido */
 
 
@@ -41,7 +85,6 @@ footer #contenedor-contenido-footer{
         font-family: var(--fuente-lora);
         background-color: var(--negro);
         bottom: 0px;
-        color: white;
         font-size: var(--pequenha-font-size);
 
         display: flex;
