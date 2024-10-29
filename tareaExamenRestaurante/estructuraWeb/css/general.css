@@ -6,11 +6,10 @@
     --negro: #0D0D0D;
 
     /* tamaño letras */
-    --base-size-font: 14px;
-    --normal-font-size: 1em;
-    --pequenha-font-size: 0.85em;
-    --grande-font-size: 1.71em;
-    --titulo-font-size: 2.57em;
+    --normal-font-size: 0.875rem;
+    --pequenha-font-size: 0.75rem;
+    --grande-font-size: 1.5rem;
+    --titulo-font-size: 2.25rem;
 
     /* fuentes */
     --fuente-lora: 'Lora', 'Garamond', 'Times New Roman', Times, serif;
@@ -19,7 +18,8 @@
 
 body{
     margin: 0;
-    font-size: var(--base-size-font);
+    overflow-x: hidden;
+    background-color: var(--beige);
 }
 
 /* logos tripadvisor y instagram, ademas de el horario y direccion, usado en el header y footer */
@@ -28,19 +28,21 @@ body{
     flex-direction: row;
     align-items: stretch;
     align-content: center;
+    color: white;
+    font-size: var(--normal-font-size);
 }
     .logos-and-datos-contacto > * {
         display: flex;
         flex-direction: column;
         gap: 10px;
     }
-    #linea-vertical-logos-and-datos-contacto{
+    .linea-vertical-logos-and-datos-contacto{
         width: 1px;
         background-color: white;
         margin: 0px 10px;
     }
-    #textos-info-logos-and-datos-contacto, 
-    #logos-trip-ig-logos-and-datos-contacto{
+    .textos-info-logos-and-datos-contacto,
+    .logos-trip-ig-logos-and-datos-contacto{
         margin: 20px 10px
     }
 
@@ -48,6 +50,86 @@ body{
 .logo-redes{
     width: 1.6rem;
 }
+
+/*header */
+.logo-emerald-and-datos-contacto{
+    position: relative; /* para o logo */
+    height: 200px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: right;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    padding: 0 5%;
+    background-color: var(--verde-oscuro);
+    margin-bottom: 1px;
+}
+    .logo-emerald-con-fondo{
+        position: absolute;
+        z-index: 11;
+        width: 300px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        margin-top: 130px;
+        left: 50%;
+        transform: translateX(-50%); /* centralo horizontalmente, xa que o left pon no centro a parte esquerda do div, esto moveo a esquerda a mitad do que mide o propio contedor, contrarestandoo*/
+        padding: 0 16px 16px 16px;
+        background-color: var(--verde-oscuro);
+        border-radius: 50%;
+    }
+.menu-completo-header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    padding: 20px 0;
+}
+    .menu-completo-header a{
+        margin: 0 10px;
+        font-family: var(--fuente-lora);
+        text-decoration: none;
+        color: white;
+    }
+    .menu-completo-header a:hover{
+        color: var(--verde-claro);
+        font-weight: bold;
+    }
+    #mini-logo-emerald-menu img{
+        width: 100px;
+        position: sticky;
+        top: 200px;
+
+    }
+
+.header-pantalla-small{
+    display: none;
+    background-color: var(--verde-oscuro);
+    height: 90px;
+    padding: 10px 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+    #logo-small-header{
+        width: 90px;
+        height: 90px;
+    }
+    .header-pantalla-small svg{
+        height: 30%;
+    }
+/* end header */
+
+/* main */
+main{
+    height: 100vh;
+}
+/* end main */
 
 /* footer */
 footer > *{
@@ -63,7 +145,6 @@ footer > *{
         background-color: var(--verde-oscuro);
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap;
         gap: 20px;
         padding: 5% 5% 5% 15%;
     }
@@ -72,9 +153,11 @@ footer > *{
         }
             #contenedor-footer-logo{
                 border-bottom: 1px white solid;
+                margin-bottom: 50px;
+                padding-bottom: 30px;
             }
                 #contenedor-footer-logo img{
-                    width: 100px;
+                    width: 130px;
                 }
             #contenedor-footer-texto{
                 display: flex;
@@ -92,19 +175,31 @@ footer > *{
 
         /* google maps */
         #google-maps-footer{
-            width: 50%;
-            height: 300px;
-            min-width: 400px;
+            margin-right: 10%;
+            width: 60%;
         }
             #google-maps-footer iframe{
                 width: 100%;
-                height: 100%;
+                height: 400px;
+                min-width: 400px;
+            }
+            #btn-ver-google-maps{
+                display: none;
+                background-color: var(--verde-claro);
+                color: white;
+                font: var(--fuente-playfair);
+                font-size: var(--normal-font-size);
+                padding: 20px;
+                width: calc(100% - 40px);
+                text-decoration: none;
+                text-align: center;
             }
 
         /* horario y demas redes */
         #contenedor-footer-logos-trip-ig-and-texto-horario-direccion{
             display: flex;
             align-content: center;
+            flex-wrap: wrap;
         }
 
     /* END footer contenido */
@@ -114,10 +209,9 @@ footer > *{
     footer #copyright{
         font-family: var(--fuente-lora);
         background-color: var(--negro);
-        bottom: 0px;
         font-size: var(--pequenha-font-size);
-
         display: flex;
+        flex-wrap: wrap;
         flex-direction: row;
         justify-content: center;
         padding: 10px;
@@ -132,3 +226,57 @@ footer > *{
     /* END footer copyright */
 
 /* END footer */
+
+
+
+
+
+@media (max-width: 1300px){
+    /* header */
+    header{
+        position: sticky;
+        top: 0;
+    }
+    .logo-emerald-and-datos-contacto,
+    .menu-completo-header{
+        display: none;
+    }
+    header .header-pantalla-small{
+        display: flex;
+    }
+    /* end header */
+
+    /* footer */
+    #contenedor-contenido-footer{
+        flex-wrap: wrap;
+        padding: 5%;
+    }
+    #contenedor-contenido-footer > .contenedor{
+        flex: 1 1 100%
+    }
+    #google-maps-footer{
+        margin: 0;
+    }
+    /*end footer */
+}
+
+@media (max-width: 500px){
+    /* footer */
+    #contenedor-contenido-footer{
+        padding: 5%;
+    }
+    #contenedor-contenido-footer > .contenedor{
+        flex: 1 1 100%
+    }
+    #google-maps-footer{
+        width: 100%;
+        margin: 0;
+    }
+    #google-maps-footer iframe{
+        display: none;
+    }
+    #btn-ver-google-maps{
+        display: inline-block;
+    }
+    /*end footer */
+}
