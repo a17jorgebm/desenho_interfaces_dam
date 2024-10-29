@@ -22,16 +22,32 @@ body{
     font-size: var(--base-size-font);
 }
 
-#logos-and-datos-contacto{
+/* logos tripadvisor y instagram, ademas de el horario y direccion, usado en el header y footer */
+.logos-and-datos-contacto{
     display: flex;
     flex-direction: row;
-
+    align-items: stretch;
+    align-content: center;
 }
+    .logos-and-datos-contacto > * {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    #linea-vertical-logos-and-datos-contacto{
+        width: 1px;
+        background-color: white;
+        margin: 0px 10px;
+    }
+    #textos-info-logos-and-datos-contacto, 
+    #logos-trip-ig-logos-and-datos-contacto{
+        margin: 20px 10px
+    }
 
+/* tamaño de logos de redes */
 .logo-redes{
     width: 1.6rem;
 }
-
 
 /* footer */
 footer > *{
@@ -42,8 +58,8 @@ footer > *{
 
 }
     /* footer contenido */
-    footer #contenedor-contenido-footer{
-        font-size: var(--normal-font-size);
+    #contenedor-contenido-footer{
+        font-size: var(--pequenha-font-size);
         background-color: var(--verde-oscuro);
         display: flex;
         flex-direction: row;
@@ -51,32 +67,46 @@ footer > *{
         gap: 20px;
         padding: 5% 5% 5% 15%;
     }
-
-        footer #contenedor-contenido-footer #d1{
+        #contenedor-logo-emerald-y-contacto{
             width: 300px;
         }
-            footer #contenedor-contenido-footer #d1 #contenedor-footer-logo{
+            #contenedor-footer-logo{
                 border-bottom: 1px white solid;
             }
-                footer #contenedor-contenido-footer #d1 #contenedor-footer-logo img{
+                #contenedor-footer-logo img{
                     width: 100px;
                 }
-            footer #contenedor-contenido-footer #d1 #contenedor-footer-texto{
+            #contenedor-footer-texto{
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
                 margin-top: 20px;
             }
-                footer #contenedor-contenido-footer #d1 #contenedor-footer-texto .redes{
+                #contenedor-footer-texto .redes{
                     display: flex;
                     flex-direction: row;
                     justify-content: left;
                     align-items: center;
                     gap: 10px;
                 }
-                    footer #contenedor-contenido-footer #d1 #contenedor-footer-texto .redes img{
 
-                    }
+        /* google maps */
+        #google-maps-footer{
+            width: 50%;
+            height: 300px;
+            min-width: 400px;
+        }
+            #google-maps-footer iframe{
+                width: 100%;
+                height: 100%;
+            }
+
+        /* horario y demas redes */
+        #contenedor-footer-logos-trip-ig-and-texto-horario-direccion{
+            display: flex;
+            align-content: center;
+        }
+
     /* END footer contenido */
 
 
