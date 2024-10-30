@@ -1,0 +1,48 @@
+#pan-flotante-main{
+    width: 30%;
+    max-width: 700px;
+    position: absolute;
+    z-index: 9;
+    transform: rotate(56.81deg);
+    left: -100px;
+    top: 700px;
+}
+
+#plato-especialidad{
+    display: flex;
+    flex-direction: row;
+    padding: 100px 15% 200px 15%;
+    gap: 30px;
+}
+    #foto-plato-principal{
+        flex: 1 1 57%;
+        box-sizing: border-box;
+    }
+    #foto-plato-principal img{
+        object-fit: cover;
+        width: 100%;
+        height: auto;
+    }
+    #info-plato-principal{
+        flex: 1 1 33%;
+        padding-left: 10px;
+        padding-top: 30px;
+        display: flex;
+        justify-content: left;
+        flex-direction: column;
+    }
+        #info-plato-principal .link-con-formato-boton{
+            align-self: flex-start;
+        }
+        #info-plato-principal p{
+            margin-top: 50px;
+        }
+
+
+@media (max-width: 1300px){
+    
+}
+
+@media (max-width: 500px){
+    
+}

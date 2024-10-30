@@ -4,6 +4,7 @@
     --verde-claro: #4EA66D;
     --beige: #F2F2DC;
     --negro: #0D0D0D;
+    --negro-con-opacidad-shadows: rgba(0, 0, 0, 0.2);
 
     /* tamaño letras */
     --normal-font-size: 0.875rem;
@@ -21,6 +22,21 @@ body{
     overflow-x: hidden;
     background-color: var(--beige);
 }
+
+h1{
+    font-size: var(--titulo-font-size);
+    font-family: var(--fuente-playfair);
+    color: var(--negro);
+    font-weight: normal;
+}
+
+p{
+    font-family: var(--fuente-lora);
+    font-weight: normal;
+    font-size: var(--normal-font-size);
+}
+
+
 
 /* logos tripadvisor y instagram, ademas de el horario y direccion, usado en el header y footer */
 .logos-and-datos-contacto{
@@ -51,10 +67,25 @@ body{
     width: 1.6rem;
 }
 
+/* href con fondo verde */
+.link-con-formato-boton{
+    background-color: var(--verde-claro);
+    color: white;
+    font: var(--fuente-playfair);
+    font-size: var(--normal-font-size);
+    padding: 12px 40px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.con-shadow{
+    box-shadow: 4px 4px 4px var(--negro-con-opacidad-shadows);
+}
+
 /*header */
 .logo-emerald-and-datos-contacto{
     position: relative; /* para o logo */
-    height: 200px;
+    height: 150px;
     flex-grow: 1;
     display: flex;
     justify-content: right;
@@ -72,7 +103,7 @@ body{
         height: 200px;
         display: flex;
         justify-content: center;
-        margin-top: 130px;
+        margin-top: 80px;
         left: 50%;
         transform: translateX(-50%); /* centralo horizontalmente, xa que o left pon no centro a parte esquerda do div, esto moveo a esquerda a mitad do que mide o propio contedor, contrarestandoo*/
         padding: 0 16px 16px 16px;
@@ -99,7 +130,6 @@ body{
     }
     .menu-completo-header a:hover{
         color: var(--verde-claro);
-        font-weight: bold;
     }
     #mini-logo-emerald-menu img{
         width: 100px;
@@ -125,11 +155,7 @@ body{
     }
 /* end header */
 
-/* main */
-main{
-    height: 100vh;
-}
-/* end main */
+
 
 /* footer */
 footer > *{
