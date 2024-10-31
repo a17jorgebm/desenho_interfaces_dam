@@ -1,0 +1,93 @@
+#contenedor-form-contacto-and-info{
+    padding: 100px 15% 200px 15%;
+    display: flex;
+    flex-direction: row;
+    font-family: var(--fuente-lora);
+    gap: 100px;
+}
+    #formulario{
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 40%;
+    }
+        #formulario form{
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .txt-form{
+            background-color: var(--verde-oscuro-con-opacidad);
+            border: none;
+            border-bottom: 1px solid var(--verde-oscuro);
+            padding: 15px;
+            font-family: var(--fuente-lora);
+            resize: none;
+        }
+        #contacto-message{
+            height: 4.5rem;
+        }
+        #formulario .txt-form:focus{
+            border: none;
+        }
+        #btn-enviar-datos-contacto{
+            border: 0;
+            padding: 20px 10px;
+        }
+    #info-form-contacto{
+        display: flex;
+        flex-direction: column;
+        padding: 30px 60px;
+        position: relative;
+        background-color: var(--verde-oscuro);
+        flex: 1 1 60%;
+        color: white;
+        margin: 150px 0 0 50px;
+        gap: 20px;
+    }
+        #info-form-contacto .redes{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 20px;
+        }
+        .cuadrado-decorativo{
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%,-50%);
+            background-color: var(--gris-oscuro);
+            width: 60px;
+            height: 60px;
+        }
+        #img-comida-info-form-contacto{
+            position: absolute;
+            bottom: -70px;
+            right: -60px;
+            width: 350px;
+        }
+
+@media (max-width: 1300px) {
+    #contenedor-form-contacto-and-info{
+        flex-wrap: wrap;
+        padding: 100px 10% 200px 10%;
+    }
+    #info-form-contacto{
+        margin: 100px 0 0 0;
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 500px) {
+    #contenedor-form-contacto-and-info{
+        flex-wrap: wrap;
+        padding: 50px 5% 200px 5%;
+    }
+    #info-form-contacto{
+        margin: 30px 0 0 0;
+        min-height: 300px;
+    }
+    .cuadrado-decorativo{
+        width: 40px;
+        height: 40px;
+    }
+}

@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emerald Morning</title>
+    <link rel="icon" href="img/logo_sinFondo.png" type="image/png">
+
+
     <link rel="stylesheet" href="css/general.css">
-    <link rel="stylesheet" href="css/index.css"
+    <link rel="stylesheet" href="css/index.css">
 
     <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
@@ -38,40 +41,58 @@
     </header>
     <div class="menu-completo-header">
         <div class="izquierda-menu">
-            <a href="">HOME</a>
-            <a href="">OUR STORY</a>
+            <a href="index.html">HOME</a>
+            <a href="history.html">OUR STORY</a>
         </div>
         <div id="mini-logo-emerald-menu">
             <img src="img/logo_pequeno.png">
         </div>
         <div class="izquierda-menu">
-            <a href="">MENU</a>
-            <a href="">CONTACT</a>
+            <a href="menu.html">MENU</a>
+            <a href="contact.html">CONTACT</a>
         </div>
     </div>
 
 
     <main>
-        <img id="pan-flotante-main" src="img/pan.png">
+        <img id="pan-flotante-main" class="filtro-sombra-img" src="img/pan.png">
+        <img id="tomate-flotante-main" class="filtro-sombra-img" src="img/tomates.png">
 
         <section id="plato-especialidad">
             <div id="foto-plato-principal">
-                <img class="con-shadow" src="img/desayuno_ingles_principal.webp" alt="Fotografia desayuno principal">
+                <img class="con-shadow" src="img/full_3.webp" alt="Fotografia desayuno principal">
             </div>
-            <div id="info-plato-principal">
+            <div id="info-plato-principal" class="info-of-section">
                 <h1>OUR SPECIALITY</h1>
                 <a href="" class="link-con-formato-boton">MUST TRY</a>
                 <p>Start your day with a hearty and satisfying meal. Our classic English breakfast includes perfectly fried eggs, juicy grilled tomatoes, sautéed mushrooms, crispy bacon, savory sausages, and a side of baked beans. Served with a slice of buttered toast, it's the perfect way to fuel up for the day ahead.</p>
             </div>
         </section>
-        <section id="plato-especialidad">
-            <div id="foto-plato-principal">
-                <img class="con-shadow" src="img/desayuno_ingles_principal.webp" alt="Fotografia desayuno principal">
+
+        <section id="sandwiches-award">
+            <div id="info-sandwiches" class="info-of-section">
+                <h1>AWARD-WINNING SANDWICHES</h1>
+                <p>Discover our selection of award-winning sandwiches, each crafted with premium ingredients and bursting with flavor. From hearty breakfast classics to timeless combinations of savory meats and cheeses, our sandwiches deliver a taste that stands out and satisfies.</p>
+                <a href="" class="link-con-formato-boton">SHOW ME</a>
             </div>
-            <div id="info-plato-principal">
-                <h1>OUR SPECIALITY</h1>
-                <a href="" class="link-con-formato-boton">MUST TRY</a>
-                <p>Start your day with a hearty and satisfying meal. Our classic English breakfast includes perfectly fried eggs, juicy grilled tomatoes, sautéed mushrooms, crispy bacon, savory sausages, and a side of baked beans. Served with a slice of buttered toast, it's the perfect way to fuel up for the day ahead.</p>
+            <div id="fotos-sandwiches">
+                <img id="img-cheese-jam-sandwich" class="con-shadow" src="img/ham_cheese_sandwich.jpg">
+                <img id="img-sarnie" class="con-shadow" src="img/breakfast_sarnie.png">
+                <img id="img-fingers" class="con-shadow" src="img/home_made_fish_fingers.jpg">
+            </div>
+        </section>
+
+        <section id="our-story">
+            <div id="fotos-story">
+                <img id="img-1-fotos-story" class="con-shadow" src="img/story1.jpg">
+                <img id="img-2-fotos-story" class="con-shadow" src="img/story2.jpg">
+                <img id="img-3-fotos-story" class="con-shadow" src="img/story3.jpg">
+            </div>
+            <div id="info-story" class="info-of-section">
+                <h1>SINCE 1975</h1>
+                <p>We are a close-knit family with a rich history, proudly running this restaurant since 1920. For over a century, our family has worked side by side, passing down recipes, traditions, and a love for great food from one generation to the next. Our commitment to quality and hospitality has remained constant, creating a warm and welcoming atmosphere that feels like home to our customers.
+                    <br><br>We take pride in our long-standing heritage, and every dish we serve carries a piece of our family’s story.</p>
+                <a href="" class="link-con-formato-boton">SEE OUR STORY</a>
             </div>
         </section>
     </main>
@@ -119,5 +140,7 @@
             <div id="nombre-jorge-footer">Jorge Blanco Mariño</div>
         </div>
     </footer>
+
+<script src="app.js" type="text/javascript"></script>
 </body>
 </html>

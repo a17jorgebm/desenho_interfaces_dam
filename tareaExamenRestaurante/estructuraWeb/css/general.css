@@ -4,11 +4,12 @@
     --verde-claro: #4EA66D;
     --beige: #F2F2DC;
     --negro: #0D0D0D;
-    --negro-con-opacidad-shadows: rgba(0, 0, 0, 0.2);
 
-    /* tamaño letras */
-    --normal-font-size: 0.875rem;
-    --pequenha-font-size: 0.75rem;
+    --negro-con-opacidad-shadows: rgba(0, 0, 0, 0.2);
+    --verde-oscuro-con-opacidad: rgba(1,38,17,0.04);
+
+    --normal-font-size: 1rem;
+    --pequenha-font-size: 0.875rem;
     --grande-font-size: 1.5rem;
     --titulo-font-size: 2.25rem;
 
@@ -26,7 +27,12 @@ body{
 h1{
     font-size: var(--titulo-font-size);
     font-family: var(--fuente-playfair);
-    color: var(--negro);
+    font-weight: normal;
+}
+
+h2{
+    font-size: var(--grande-font-size);
+    font-family: var(--fuente-lora);
     font-weight: normal;
 }
 
@@ -35,8 +41,6 @@ p{
     font-weight: normal;
     font-size: var(--normal-font-size);
 }
-
-
 
 /* logos tripadvisor y instagram, ademas de el horario y direccion, usado en el header y footer */
 .logos-and-datos-contacto{
@@ -82,6 +86,10 @@ p{
     box-shadow: 4px 4px 4px var(--negro-con-opacidad-shadows);
 }
 
+.filtro-sombra-img{
+    filter: drop-shadow(4px 4px 4px var(--negro-con-opacidad-shadows));
+}
+
 /*header */
 .logo-emerald-and-datos-contacto{
     position: relative; /* para o logo */
@@ -99,11 +107,11 @@ p{
     .logo-emerald-con-fondo{
         position: absolute;
         z-index: 11;
-        width: 300px;
-        height: 200px;
+        width: 250px;
+        height: 150px;
         display: flex;
         justify-content: center;
-        margin-top: 80px;
+        margin-top: 85px;
         left: 50%;
         transform: translateX(-50%); /* centralo horizontalmente, xa que o left pon no centro a parte esquerda do div, esto moveo a esquerda a mitad do que mide o propio contedor, contrarestandoo*/
         padding: 0 16px 16px 16px;
@@ -120,13 +128,14 @@ p{
     justify-content: center;
     align-items: center;
     gap: 200px;
-    padding: 20px 0;
+    padding: 10px 0;
 }
     .menu-completo-header a{
         margin: 0 10px;
         font-family: var(--fuente-lora);
         text-decoration: none;
         color: white;
+        font-size: var(--normal-font-size);
     }
     .menu-completo-header a:hover{
         color: var(--verde-claro);
@@ -145,6 +154,7 @@ p{
     padding: 10px 5%;
     justify-content: space-between;
     align-items: center;
+    transition: transform 0.3s ease-in-out;
 }
     #logo-small-header{
         width: 90px;
@@ -153,6 +163,13 @@ p{
     .header-pantalla-small svg{
         height: 30%;
     }
+    .header-pantalla-small svg:hover{
+        cursor: pointer;
+    }
+
+.oculto{
+    transform: translateY(-100%);
+}
 /* end header */
 
 
@@ -262,6 +279,7 @@ footer > *{
     header{
         position: sticky;
         top: 0;
+        z-index: 12;
     }
     .logo-emerald-and-datos-contacto,
     .menu-completo-header{
