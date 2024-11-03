@@ -1,0 +1,72 @@
+.titulo-seccion-menu{
+    font-family: var(--fuente-lora);
+    font-size: var(--normal-font-size);
+    width: 300px;
+    border-bottom: 1px solid var(--verde-oscuro);
+    display: flex;
+    justify-content: center;
+}
+
+.precio{
+    background-color: var(--verde-claro);
+    padding: 15px 25px;
+    color: white;
+}
+
+.food-div{
+    /* meter sombra en todo o div */
+}
+
+#foto-header-menu{
+    height: 300px;
+}
+    #foto-header-menu img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+#menu-mensaje-explicativo{
+    height: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+    #banderilla-mensaje-explicativo-menu{
+        position: absolute;
+        left: 10%;
+        box-sizing: border-box;
+        background-color: var(--verde-claro);
+        height: 100%;
+        text-orientation: upright;
+        writing-mode: vertical-lr;
+        display: flex;
+        justify-content: center;
+        padding: 0 50px 20px 50px;
+        color: white;
+        font-family: var(--fuente-playfair);
+    }
+    #menu-mensaje-explicativo p{
+        max-width: 450px;
+        text-align: center;
+    }
+
+#seccion-breakfast{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 15% 50px 15%;
+}
+    #food-irish-breakfast{
+        display: flex;
+        flex-direction: row;
+        margin: 100px 200px;
+    }
+        #food-irish-breakfast img{
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+        }

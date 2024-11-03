@@ -49,7 +49,7 @@ p{
     align-items: stretch;
     align-content: center;
     color: white;
-    font-size: var(--normal-font-size);
+    font-size: var(--pequenha-font-size);
 }
     .logos-and-datos-contacto > * {
         display: flex;
