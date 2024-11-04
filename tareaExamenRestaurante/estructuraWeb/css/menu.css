@@ -1,3 +1,8 @@
+:root{
+    --verde-oscuro-con-opacidad-food: rgba(1,38,17,0.07);
+    --beige-con-opacidad-food: rgba(242,242,220,0.07)
+}
+
 .titulo-seccion-menu{
     font-family: var(--fuente-lora);
     font-size: var(--normal-font-size);
@@ -13,10 +18,6 @@
     color: white;
 }
 
-.food-div{
-    /* meter sombra en todo o div */
-}
-
 #foto-header-menu{
     height: 300px;
 }
@@ -27,7 +28,7 @@
     }
 
 #menu-mensaje-explicativo{
-    height: 400px;
+    height: 300px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -63,10 +64,73 @@
     #food-irish-breakfast{
         display: flex;
         flex-direction: row;
-        margin: 100px 200px;
+        margin: 50px 0px;
+        justify-content: center;
+        height: 350px;
+        background-color: var(--verde-oscuro-con-opacidad-food);
+        max-width: 800px;
     }
-        #food-irish-breakfast img{
+        #food-irish-breakfast .img-container{
+            flex: 1 1 50%;
             width: 50%;
-            height: auto;
-            object-fit: cover;
         }
+            #food-irish-breakfast .img-container img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+            }
+        #info-irish-breakfast{
+            box-sizing: border-box;
+            flex: 1 1 40%;
+            padding: 30px 30px;
+            display: flex;
+            flex-direction: column;
+        }
+            #info-irish-breakfast .precio{
+                align-self: flex-start;
+            }
+
+#seccion-sandwiches{
+    background-color: var(--gris-oscuro);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15% 50px 15%;
+}   
+    #seccion-sandwiches .titulo-seccion-menu{
+        color: white;
+        border-color: white;
+    }
+    #seccion-sandwiches .contenedor-sandwiches{
+        margin: 50px 0px;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+    }
+        .sandwich{
+            flex: 1 1 35%;
+            display: flex;
+            flex-direction: column;
+        }
+        .sandwich.small-sandwich{
+            flex: 1 1 25%;
+        }
+            .sandwich .img-container img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        .info-sandwiches{
+            background-color: var(--beige-con-opacidad-food);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            padding: 20px;
+        }
+            .info-sandwiches .precio{
+                align-self: flex-start;
+                margin-top: auto;
+            }
+

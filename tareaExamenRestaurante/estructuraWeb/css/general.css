@@ -36,6 +36,12 @@ h2{
     font-weight: normal;
 }
 
+h2{
+    font-size: var(--normal-font-size);
+    font-family: var(--fuente-lora);
+    font-weight: bold;
+}
+
 p{
     font-family: var(--fuente-lora);
     font-weight: normal;
