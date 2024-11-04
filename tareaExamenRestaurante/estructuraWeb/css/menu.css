@@ -66,9 +66,9 @@
         flex-direction: row;
         margin: 50px 0px;
         justify-content: center;
-        height: 350px;
+        height: 400px;
         background-color: var(--verde-oscuro-con-opacidad-food);
-        max-width: 800px;
+        max-width: 1000px;
     }
         #food-irish-breakfast .img-container{
             flex: 1 1 50%;
@@ -133,4 +133,60 @@
                 align-self: flex-start;
                 margin-top: auto;
             }
+            .info-sandwiches p{
+                max-width: 400px;
+            }
 
+#seccion-postres{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 15% 50px 15%;
+}
+    #pie-flotante-postres{
+        position: absolute;
+        top: -200px;
+        right: -200px;
+        width: 500px;
+    }
+    .contenedor-postres{
+        max-width: 1000px;
+        margin: 50px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+        .postre{
+            display: flex;
+            flex-direction: row;
+            background-color: var(--verde-oscuro-con-opacidad-food);
+            max-height: 300px;
+        }
+        .postre.esquerda{
+            margin-right: 20%;
+        }
+        .postre.dereita{
+            margin-left: 20%;
+            flex-direction: row-reverse;
+        }
+            .postre .img-container{
+                flex: 1 0 40%;
+            }
+                .postre .img-container img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            .postre .info-postres{
+                box-sizing: border-box;
+                flex: 1 0 60%;
+                padding: 0 40px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+                .info-postres .precio{
+                    align-self: flex-start;
+                }
