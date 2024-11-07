@@ -150,7 +150,11 @@ p{
         width: 100px;
         position: sticky;
         top: 200px;
-
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+    .logo-visible{
+        opacity: 1!important;
     }
 
 .header-pantalla-small{
@@ -186,7 +190,6 @@ footer > *{
     box-sizing: border-box;
     color: white;
     font-family: var(--fuente-lora);
-
 }
     /* footer contenido */
     #contenedor-contenido-footer{

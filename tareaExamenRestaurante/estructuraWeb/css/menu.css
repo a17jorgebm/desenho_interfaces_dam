@@ -190,3 +190,9 @@
                 .info-postres .precio{
                     align-self: flex-start;
                 }
+        .food-div{
+            transition: transform 0.5s ease;
+        }
+        .food-div:hover{
+            transform: scale(1.01);
+        }

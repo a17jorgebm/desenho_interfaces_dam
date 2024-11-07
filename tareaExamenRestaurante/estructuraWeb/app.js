@@ -35,3 +35,24 @@ window.addEventListener('resize', () => {
     observer.disconnect()
     observer.observe(footer)
 })
+
+//facer que o logo pequeno apareza
+const miniLogoMenu=document.querySelector('#mini-logo-emerald-menu img')
+const observerLogoCallBack = (entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting){
+            miniLogoMenu.classList.remove('logo-visible')
+        }else {
+            miniLogoMenu.classList.add('logo-visible')
+        }
+        console.log(miniLogoMenu)
+    })
+}
+
+const observerLogoOptions={
+    root: null,
+    threshold: 0
+}
+
+const observerLogo= new IntersectionObserver(observerLogoCallBack,observerLogoOptions)
+observerLogo.observe(bigHeader)

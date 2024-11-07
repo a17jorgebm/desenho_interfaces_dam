@@ -33,7 +33,7 @@
 }
     #linea-storyline{
         width: 5px;
-        height: calc(100% - 200px);
+        height: calc(100% - 150px);
         position: absolute;
         z-index: 2;
         left: 55%;
