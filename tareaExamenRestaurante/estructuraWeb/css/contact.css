@@ -32,7 +32,12 @@
         #btn-enviar-datos-contacto{
             border: 0;
             padding: 20px 10px;
+            cursor: pointer;
+
         }
+            #btn-enviar-datos-contacto:hover{
+                transform: scale(1.02);
+            }
     #info-form-contacto{
         display: flex;
         flex-direction: column;
