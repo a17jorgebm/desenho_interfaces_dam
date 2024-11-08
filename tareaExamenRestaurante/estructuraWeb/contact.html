@@ -64,10 +64,11 @@
         <section id="formulario">
             <h1>CONTACT US</h1>
             <p>Feel free to contact us any time. We will get back to you as soon as we can!</p>
-            <form>
-                <input type="text" id="contacto-nombre" class="txt-form" placeholder="Name">
-                <input type="text" id="contacto-email" class="txt-form" placeholder="Email">
-                <textarea id="contacto-message" class="txt-form" placeholder="Message"></textarea>
+            <form id="elemento-form-contacto">
+                <input type="text" id="contacto-nombre" class="txt-form required" placeholder="Name" name="contact-name">
+                <input type="email" id="contacto-email" class="txt-form required" placeholder="Email" name="email">
+                <textarea id="contacto-message" class="txt-form required" placeholder="Message" name="message"></textarea>
+                <div id="error-message">Please fill out all the fields*</div>
                 <button type="button" id="btn-enviar-datos-contacto" class="link-con-formato-boton">SEND</button>
             </form>
         </section>
@@ -134,5 +135,5 @@
     </div>
 </footer>
 <script src="app.js" type="text/javascript"></script>
-
+<script src="contacto.js" type="text/javascript"></script>
 </body>

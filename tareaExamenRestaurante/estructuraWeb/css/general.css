@@ -24,6 +24,10 @@ body{
     background-color: var(--beige);
 }
 
+img {
+    pointer-events: none;
+  }
+
 h1{
     font-size: var(--titulo-font-size);
     font-family: var(--fuente-playfair);

@@ -45,7 +45,6 @@ const observerLogoCallBack = (entries) => {
         }else {
             miniLogoMenu.classList.add('logo-visible')
         }
-        console.log(miniLogoMenu)
     })
 }
 
