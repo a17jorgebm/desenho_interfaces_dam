@@ -13,6 +13,7 @@
         display: flex;
         flex-direction: column;
         flex: 1 0 40%;
+        position: relative;
     }
         #formulario form{
             display: flex;
@@ -27,6 +28,7 @@
             font-family: var(--fuente-lora);
             resize: none;
             opacity: 0.5;
+            transition: color 0.5s ease-in-out;
         }
         #contacto-message{
             height: 4.5rem;
@@ -42,7 +44,6 @@
             border: 0;
             padding: 20px 10px;
             cursor: pointer;
-
         }
             #btn-enviar-datos-contacto:hover{
                 transform: scale(1.02);
@@ -51,11 +52,40 @@
             border-bottom: 1px solid var(--rojo-aviso);
             color: var(--rojo-aviso);
         }
-        #error-message{
-            font-size: var(--pequenha-font-size);
-            padding: 10px;
+        .campo-incompleto::placeholder{
             color: var(--rojo-aviso);
         }
+        #error-message{
+            font-size: var(--pequenha-font-size);
+            color: var(--rojo-aviso);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+            .opacidad-1{
+                opacity: 1!important;
+            }
+        #mensaje-form-enviado{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: var(--verde-claro);
+            text-align: center;
+            padding: 50px;
+            z-index: -1;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            color: white;
+        }
+            .mostrar-mensaje-confirmacion{
+                opacity: 1!important;
+            }
+            .z-index-negativo{
+                z-index: 1!important;
+            }
     #info-form-contacto{
         display: flex;
         flex-direction: column;
