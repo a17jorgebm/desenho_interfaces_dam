@@ -64,28 +64,6 @@
             .opacidad-1{
                 opacity: 1!important;
             }
-        #mensaje-form-enviado{
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background-color: var(--verde-claro);
-            text-align: center;
-            padding: 50px;
-            z-index: -1;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            color: white;
-        }
-            .mostrar-mensaje-confirmacion{
-                opacity: 1!important;
-            }
-            .z-index-negativo{
-                z-index: 1!important;
-            }
     #info-form-contacto{
         display: flex;
         flex-direction: column;

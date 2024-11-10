@@ -17,8 +17,7 @@ botonEnvio.addEventListener('click' ,(ev) => {
     }
     if(camposCorrectos){
         if (isValidEmail(inputEmail.value)){
-            //formulario.submit()
-            mostrarMensajeConfirmacion()
+            formulario.submit()
         }else {
             verificarEmailElemento(inputEmail)
             addEventoFormActualizarErrores()
@@ -91,17 +90,6 @@ function camposRequeridosCompletados(){
         }
     }
     return camposCorrectos
-}
-
-function mostrarMensajeConfirmacion(){
-    mensajeConfirmacion.classList.add('mostrar-mensaje-confirmacion','z-index-negativo')
-    setTimeout(()=>{
-        mensajeConfirmacion.classList.remove('mostrar-mensaje-confirmacion')
-    },4000)
-    //fagoo asi separado porque se lle quito o zindex ao mismo tempo que a opacidad vese o formulario a traves do elemento
-    setTimeout(()=>{
-        mensajeConfirmacion.classList.remove('z-index-negativo')
-    },5000)
 }
 
 }

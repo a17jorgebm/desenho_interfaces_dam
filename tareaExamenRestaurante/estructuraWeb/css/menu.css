@@ -13,9 +13,9 @@
 }
 
 .precio{
-    background-color: var(--verde-claro);
-    padding: 15px 25px;
-    color: white;
+    padding: 10px 15px;
+    border-bottom: 3px solid var(--verde-claro);
+    color: black;
 }
 
 #foto-header-menu{
@@ -132,6 +132,7 @@
             .info-sandwiches .precio{
                 align-self: flex-start;
                 margin-top: auto;
+                color: white;
             }
             .info-sandwiches p{
                 max-width: 400px;
