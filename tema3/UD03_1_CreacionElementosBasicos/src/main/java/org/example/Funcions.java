@@ -6,10 +6,9 @@ import java.awt.*;
 public class Funcions {
     public static JFrame getGentanaBasica(){
         JFrame ventana = new JFrame();
-        ventana.setSize(new Dimension(800,600));
+        ventana.setSize(new Dimension(500,300));
         ventana.setLayout(new GridBagLayout());
-        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        ventana.setLocationRelativeTo(null);
+        ventana.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         return ventana;
     }
 
