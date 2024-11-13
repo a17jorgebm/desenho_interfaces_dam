@@ -5,10 +5,10 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Ejercicios {
     public static JFrame ejer1(){
@@ -58,13 +58,13 @@ public class Ejercicios {
         botonMostrar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(textField.getText().trim().equals("")
+                System.out.println(textField.getText().trim().isBlank()
                         ? "No se ha introducido nada"
                         : textField.getText().trim());
             }
         });
 
-        Funcions.cambiarValoresGBC(gbc,0,0,1,1,new Insets(45,45,45,45));
+        Funcions.cambiarValoresGBC(gbc,0,0,1,1,new Insets(0,45,0,45));
         gbc.fill=GridBagConstraints.HORIZONTAL;
         ventana.add(textField,gbc);
         Funcions.cambiarValoresGBC(gbc,0,1,1,1,new Insets(45,45,45,45));
@@ -274,8 +274,6 @@ public class Ejercicios {
         JFrame ventana=Funcions.getGentanaBasica();
         ventana.setTitle("Ejer 9");
 
-        List<Checkbox> checkboxes=new ArrayList<>();
-
         GridBagConstraints gbc=new GridBagConstraints();
 
         JPanel panelCompleto=new JPanel();
@@ -286,25 +284,32 @@ public class Ejercicios {
         ventana.add(panelCompleto,gbc);
 
         String[] toppings={"Queso","Extra","Pepperoni","Aceitunas"};
+        List<JCheckBox> checkboxes=new ArrayList<>();
 
-        for (int i=0;i<toppings.length;i++){
-            Funcions.cambiarValoresGBC(gbc,0,i,1,1);
-            JCheckBox checkBox=new JCheckBox(toppings[i]);
+        int posicionTopping=0;
+        while (posicionTopping<toppings.length){
+            Funcions.cambiarValoresGBC(gbc,0,posicionTopping,1,1);
+            JCheckBox checkBox=new JCheckBox(toppings[posicionTopping]);
             gbc.fill=GridBagConstraints.HORIZONTAL;
             gbc.anchor=GridBagConstraints.CENTER;
             panelCompleto.add(checkBox,gbc);
+            checkboxes.add(checkBox);
+            ++posicionTopping;
         }
 
-        //seguir esto
-
         JButton button=new JButton("Confirmar");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println(grupo.getSelection().getActionCommand());
+        button.addActionListener(e -> {
+            List<JCheckBox> seleccionados=checkboxes.stream().filter(JCheckBox::isSelected).toList();
+            if (!seleccionados.isEmpty()){
+                StringBuilder stringBuilder=new StringBuilder();
+                stringBuilder.append("Toppings seleccionados:");
+                seleccionados.forEach(check -> stringBuilder.append(String.format("\n\t%s",check.getText())));
+                System.out.println(stringBuilder);
+            }else {
+                System.out.println("No se ha seleccionado ningún topping!");
             }
         });
-        Funcions.cambiarValoresGBC(gbc,0,3,1,1);
+        Funcions.cambiarValoresGBC(gbc,0,posicionTopping,1,1);
         panelCompleto.add(button,gbc);
 
         return ventana;
@@ -313,6 +318,27 @@ public class Ejercicios {
         JFrame ventana=Funcions.getGentanaBasica();
         ventana.setTitle("Ejer 10");
 
+        JMenuBar barraMenu= new JMenuBar();
+            JMenu menuArchivo=new JMenu("Archivo");
+                JMenuItem itemAbrir=new JMenuItem("Abrir");
+                itemAbrir.addActionListener(e -> System.out.println(itemAbrir.getText()));
+                menuArchivo.add(itemAbrir);
+                JMenuItem itemGuardar=new JMenuItem("Guardar");
+                itemGuardar.addActionListener(e -> System.out.println(itemGuardar.getText()));
+                menuArchivo.add(itemGuardar);
+            JMenu menuEdicion=new JMenu("Edición");
+            //nos jmenu usase mouseListener, mentras que nos jmenuitem actionlistener
+                //en concreto mousePressed porque con mouseClicked hai que dar 2 veces para que ejecute a acción
+            menuEdicion.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    System.out.println(menuEdicion.getText());
+                }
+            });
+        barraMenu.add(menuArchivo);
+        barraMenu.add(menuEdicion);
+
+        ventana.setJMenuBar(barraMenu);
         return ventana;
     }
 }
