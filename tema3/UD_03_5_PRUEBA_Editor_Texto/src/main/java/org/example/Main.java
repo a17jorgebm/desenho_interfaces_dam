@@ -18,11 +18,18 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JMenuBar barra=new JMenuBar();
-        JMenu accion=new JMenu("Accion");
+        JMenu accion=new JMenu("Archivo");
         barra.add(accion);
+            JMenuItem abrir = new JMenuItem("Abrir");
+            JMenuItem guardar = new JMenuItem("Guardar");
+            JMenuItem cerrar = new JMenuItem("Cerrar");
+            accion.add(abrir);
+            accion.add(guardar);
+            accion.add(cerrar);
+
         frame.setJMenuBar(barra);
 
-        JTextArea textArea = new JTextArea("This JFrame uses FlatLaf for a custom look and feel.");
+        JTextArea textArea = new JTextArea();
         frame.add(new JScrollPane(textArea));
         frame.setVisible(true);
     }
