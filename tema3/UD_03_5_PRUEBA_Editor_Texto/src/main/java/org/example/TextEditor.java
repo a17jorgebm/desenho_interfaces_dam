@@ -10,12 +10,12 @@ public class TextEditor {
     private GridBagLayout gridBagLayout;
     private GridBagConstraints gbc;
 
+    public static void main(String[] args){
+        TextEditor textEditor=new TextEditor();
+        textEditor.startInterface();
+    }
+
     public void startInterface(){
-        try {
-            UIManager.setLookAndFeel(new FlatDarkLaf());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         JFrame frame = new JFrame("Custom Look and Feel");
         frame.setLocationRelativeTo(null);
