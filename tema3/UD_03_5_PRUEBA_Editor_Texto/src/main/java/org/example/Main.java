@@ -62,7 +62,7 @@ public class Main {
             ventana.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    if (!this.fileContentHasBeenEdited){
+                    if (!Main.this.fileContentHasBeenEdited){ //luis non me mates :)
                         int actionToDo = askIfSaveBeforeDoAction();
                         if (actionToDo==OPTION_CANCEL_OPERATION) return;
                         if (actionToDo==OPTION_SAVE_FILE) {
@@ -72,7 +72,7 @@ public class Main {
                             }
                         }
                     }
-                    super.windowClosing(e);
+                    Main.this.ventana.dispose();
                 }
             });
 
@@ -195,12 +195,12 @@ public class Main {
 
     private int askIfSaveBeforeDoAction(){
         // Opciones a mostrar
-        String[] opciones = {"Guardar", "Abrir sin guardar", "Cancelar"};
+        String[] opciones = {"Guardar", "Continuar sin guardar", "Cancelar"};
 
         // Mostrar el cuadro de diálogo
         int saveBeforeOpenPanel = JOptionPane.showOptionDialog(
-                null, // Componente padre (null para centrar en la pantalla)
-                "Tiene cambios sin guardar, que deseas hacer antes de abrir el nuevo archivo?", // Mensaje
+                ventana, // Componente padre (null para centrar en la pantalla)
+                "Tiene cambios sin guardar, que deseas hacer?", // Mensaje
                 "Atención", // Título
                 JOptionPane.DEFAULT_OPTION, // Tipo de opciones
                 JOptionPane.QUESTION_MESSAGE, // Tipo de mensaje
