@@ -262,7 +262,10 @@ public class Ejercicios {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println(grupo.getSelection().getActionCommand());
+                ButtonModel btnModelSelected=grupo.getSelection();
+                System.out.println(btnModelSelected!=null
+                        ? btnModelSelected.getActionCommand()
+                        : "No se ha seleccionado nada!");
             }
         });
         Funcions.cambiarValoresGBC(gbc,0,3,1,1);
