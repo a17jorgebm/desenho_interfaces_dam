@@ -69,11 +69,13 @@ public class Main {
                         if (actionToDo==OPTION_SAVE_FILE) {
                             if(!saveContents(Main.this.textAreaEditor.getText())){
                                 //mostrar mensaje de error
+                                showErrorMessage("Error al intentar guardar el contenido del fichero");
                                 return; //cancelar operacion
                             }
                         }
                     }
                     Main.this.ventana.dispose();
+                    System.exit(0);
                 }
             });
 
@@ -86,10 +88,14 @@ public class Main {
                         openTextFile();
                     });
                 });
+                abrir.setMnemonic(KeyEvent.VK_O); // Mnemonic for accessibility
+                abrir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK)); // Shortcut (Ctrl+S)
                 JMenuItem guardar = new JMenuItem("Guardar");
                 guardar.addActionListener(e -> {
                     saveContents(Main.this.textAreaEditor.getText());
                 });
+                guardar.setMnemonic(KeyEvent.VK_S); // Mnemonic for accessibility
+                guardar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.CTRL_DOWN_MASK)); // Shortcut (Ctrl+S)
                 JMenuItem cerrar = new JMenuItem("Cerrar");
                 cerrar.addActionListener(e -> {
                     if (Main.this.fileContentHasBeenEdited){ //luis non me mates :)
@@ -98,11 +104,13 @@ public class Main {
                         if (actionToDo==OPTION_SAVE_FILE) {
                             if(!saveContents(Main.this.textAreaEditor.getText())){
                                 //mostrar mensaje de error
+                                showErrorMessage("Error al intentar guardar el contenido del fichero");
                                 return; //cancelar operacion
                             }
                         }
                     }
                     Main.this.ventana.dispose();
+                    System.exit(0);
                 });
             accion.add(abrir);
             accion.add(guardar);
@@ -198,6 +206,7 @@ public class Main {
         }
 
         JFileChooser chooser=new JFileChooser();
+        chooser.setDialogTitle("Selecciona el nuevo archivo a editar");
 
         javax.swing.filechooser.FileFilter fileFilter=new FileFilter() {
             @Override
@@ -227,7 +236,7 @@ public class Main {
         String fileText=getFileText(selectedFile.toPath());
         if (fileText==null){
             //mensaje de error
-            System.out.println("Error ao abrir o ficheiro");
+            showErrorMessage("No se ha podido leer el contenido del fichero.");
             return;
         }
 
@@ -258,15 +267,16 @@ public class Main {
     }
 
     private Path createNewFile(){
-        String newFileName=JOptionPane.showInputDialog("Nombre del nuevo archivo:");
+        String newFileName=JOptionPane.showInputDialog(JOptionPane.getRootFrame(),"Nombre del nuevo archivo:");
+        if (newFileName==null) return null;
         if (!isValidFileName(newFileName)){
-            System.out.println("nombre non valido");
+            showErrorMessage("Nombre no válido, acuerdate de incluir una extensión válida!\nEj. .txt, .html, .md, .json...");
             return null;
         }
 
         JFileChooser jFileChooser=new JFileChooser();
         jFileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-        jFileChooser.setName("Selecciona directorio de guardado");
+        jFileChooser.setDialogTitle("Selecciona directorio de guardado");
         if (jFileChooser.showOpenDialog(null)!=JFileChooser.APPROVE_OPTION) return null;
 
         return jFileChooser.getSelectedFile().toPath().resolve(newFileName);
@@ -293,19 +303,28 @@ public class Main {
         });
     }
 
+    private void showErrorMessage(String message){
+        JOptionPane.showMessageDialog(JOptionPane.getRootFrame(),message,"Error",JOptionPane.ERROR_MESSAGE);
+    }
+
     //Data ---------------------------------------------------------------------------------------------------------------------------------
     private String getFileText(Path fileToOpenPath){
         if (!Files.exists(fileToOpenPath)){
-            System.out.println("O ficheiro non existe");
             return null;
         }
-        StringBuilder text=new StringBuilder();
-        try(BufferedReader reader=new BufferedReader(new FileReader(fileToOpenPath.toFile()))){
+
+        try(BufferedReader reader=new BufferedReader(new FileReader(fileToOpenPath.toFile()));
+            StringWriter textString=new StringWriter();
+        ){
             String line;
             while ((line=reader.readLine())!=null){
-                text.append(line);
+                if (!line.isBlank()){
+                    textString.write(line+System.lineSeparator());
+                }else {
+                    textString.write(System.lineSeparator());
+                }
             }
-            return text.toString();
+            return textString.toString();
         }catch (IOException e){
             return null;
         }
@@ -326,7 +345,6 @@ public class Main {
                 output.write(System.lineSeparator());
             }
         }catch (IOException e){
-            System.out.println("Fallito o gardar: "+e.getMessage());
             return false;
         }
         this.openedFile=fileToSave;
