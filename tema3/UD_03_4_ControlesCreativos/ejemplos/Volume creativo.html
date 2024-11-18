@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Control de volumen creativo</title>
+	<style>
+		/* Aplica a todos los elementos */
+		* {
+		  font-family: Calibri, sans-serif; /* Define la fuente "Calibri" como predeterminada */
+		  box-sizing: border-box; /* Incluye el padding y border en el tamaño total del elemento */
+		}
+
+		/* Variables CSS para colores */
+		:root {
+		  --body-color: #000; /* Color de fondo de toda la página */
+		  --icon-color: #B5B0C0; /* Color inicial de los íconos */
+		  --icon-color-hover: #ffff00; /* Color del ícono al pasar el cursor */
+		  --icon-color-active: #ffff00; /* Color del ícono cuando está activo */
+		  --main-color: #c0bac9; /* Color principal, podría usarse para otros elementos */
+		  --slider-track: #e0dce0; /* Color de fondo de la barra del control deslizante */
+		  --slider-handle: #ffff00; /* Color del mango del control deslizante */
+		}
+
+		/* Estilos del fondo de la página */
+		body {
+		  background: var(--body-color); /* Asigna el color de fondo definido en la variable */
+		  margin: 0; /* Elimina el margen predeterminado del body */
+		}
+
+		/* Contenedor principal centrado */
+		.container {
+		  position: absolute; /* Posiciona el contenedor en coordenadas absolutas */
+		  top: 50%; /* Lleva el contenedor al 50% de la altura */
+		  left: 50%; /* Lleva el contenedor al 50% del ancho */
+		  transform: translate(-50%, -50%); /* Centra el contenedor exactamente en el medio de la pantalla */
+		}
+
+		/* Estilo general del control de volumen */
+		.wu__svc {
+		  display: flex; /* Organiza los elementos hijos en fila */
+		  align-items: center; /* Alinea verticalmente los elementos hijos al centro */
+		  width: 300px; /* Define el ancho del control */
+		}
+
+		/* Icono del control de volumen */
+		.wu__svc .wu__svc__icon {
+		  margin: 0 1em 0 0; /* Espacio a la derecha del icono */
+		  position: relative; /* Permite usar coordenadas relativas para este elemento */
+		}
+
+		/* Cambia el color del ícono al pasar el cursor */
+		.wu__svc .wu__svc__icon:hover svg {
+		  fill: var(--icon-color-hover); /* Asigna el color de hover al SVG dentro del icono */
+		}
+
+		/* Estilo del SVG del ícono */
+		.wu__svc .wu__svc__icon svg {
+		  width: 35px; /* Ancho del ícono */
+		  height: auto; /* Altura automática para mantener la proporción */
+		  fill: var(--icon-color); /* Color inicial del ícono */
+		  cursor: pointer; /* Cambia el cursor a "pointer" indicando que es clicable */
+		}
+
+		/* Barra del control deslizante de volumen */
+		.wu__svc .wu__svc__slider {
+		  width: 100%; /* Ocupa todo el ancho disponible */
+		  height: 5px; /* Define la altura de la barra */
+		  border-radius: 50px; /* Redondea los bordes de la barra */
+		  background: var(--slider-track); /* Color de fondo de la barra deslizante */
+		}
+
+		/* Mango del control deslizante */
+		.wu__svc .wu__svc__slider .wu_svc__slider__handle {
+		  height: 10px; /* Altura del mango */
+		  width: 10px; /* Ancho del mango */
+		  border-radius: 50px; /* Hace el mango completamente redondo */
+		  margin: calc(5px / -2); /* Posiciona el mango en el centro de la barra */
+		  background: var(--slider-handle); /* Color del mango */
+		}
+
+		/* Etiqueta de volumen */
+		.volume-label {
+		  font-size: 16px; /* Tamaño de la fuente del texto */
+		  color: var(--icon-color); /* Color del texto, reutilizando el color de los íconos */
+		  margin-bottom: 5px; /* Espacio debajo de la etiqueta */
+		  text-align: center; /* Alinea el texto en el centro del contenedor */
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="wu__svc"></div>
+		<div class="volume-label" id="volume-label">Volumen: 0</div> <!-- Etiqueta para mostrar el volumen -->
+	</div>
+	<script>
+		//Función de mapeo para transformar un número de un rango a otro
+		function map(number, minin, maxin, minout, maxout) {
+			return (number - minin) * (maxout - minout) / (maxin - minin) + minout;
+		}
+		
+		//Función para convertir grados a radianes
+		function degToRad(deg) {
+			return deg * Math.PI / 180;
+		}
+
+		//Función que calcula un punto en el círculo dado un ángulo
+		function pointOnCircle(deg, c, r, startAngle = 0) {
+			if(!c instanceof Object) return false;
+
+			return {x: c.x + r * Math.cos(degToRad(deg + startAngle)), y: c.y + r * Math.sin(degToRad(deg + startAngle))};
+		}
+
+		//Clase para trabajar con curvas Bézier
+		class BezierCurve {
+
+			constructor(x, y, x1, y1, x2, y2, k = 100) {
+				this.x = x;
+				this.y = y;
+				this.x1 = x1;
+				this.y1 = y1;
+				this.x2 = x2;
+				this.y2 = y2;
+				this.k = k;
+			}
+			
+			//Calcula un punto en la curva para un valor t
+			calculate(arg1, arg2, arg3, t) {
+				return (1 - t) * (1 - t) * arg1 + 2 * (1 - t) * t * arg2 + t * t * arg3;
+			}
+
+			//Devuelve el valor x de la curva para t
+			calculateX(t) {
+				return this.calculate(this.x, this.x1, this.x2, t)
+			}
+
+			//Devuelve el valor y de la curva para t
+			calculateY(t) {
+				return this.calculate(this.y, this.y1, this.y2, t);
+			}
+			
+			//Devuelve un array de puntos para la curva
+			getPoints() {
+				let points = [];
+				for(let i = 0; i < this.k; i++) {
+					points.push({x: this.calculateX(i/this.k), y: this.calculateY(i/this.k)});
+				}
+				return points;
+			}
+
+		}
+
+		//Clase principal que gestiona la lógica del control de volumen
+		class VolumeCatapult {
+		  constructor(element) {
+			this.element = document.querySelector(element);	//Elemento de control de volumen
+			this.children = [];
+				this.handler = 0;
+				this.maxDuration = 1000;	//Duración máxima del efecto de carga
+				
+				this._charge = 0;
+
+				this.locked = false;
+				this.secure = false;
+				this.max_angle = 0.5;
+				this.init();			//Inicializa el control
+		  }
+
+			//Getter para el valor del volumen
+			get value() {
+				return this.input.value;
+			}
+
+			//Método para iniciar la carga
+			charge() {
+				if (this.locked) return false; //Si está bloqueado, no permite carga
+				this.secure = true; //Seguridad activada
+
+				this.handler.style.visibility = 'hidden';
+				this.handler.style.opacity = '0';
+
+				let now = Date.now(); //Momento inicial
+				this.i = setInterval(() => {
+					let interval = Date.now() - now;
+					this._charge = interval < 50 ? 0 : map(interval, 0, this.maxDuration, 0, 100);
+
+					this.icon.style.transform = `rotate(${-this._charge / (20 / 9)}deg)`;
+					document.getElementById('volume-label').innerText = `Volumen: ${Math.round(this._charge)}`;
+
+					//Detiene la carga cuando se alcanza la duración máxima
+					if(Date.now() - now >= this.maxDuration) {
+						clearInterval(this.i);
+						this._charge = 100;
+						this.icon.style.transform = 'rotate(-45deg)';
+						this.i = undefined;
+					}
+				}, 5);
+			}
+			
+			//Método para liberar la carga y ajustar el volumen
+			release(charge) {
+				if(this.locked || !this.secure) return false;
+
+			this.locked = true;
+				this.input.value = this._charge;
+
+				let width = this.slider.offsetWidth;
+
+			if (this.i != "undefined") clearInterval(this.i);
+				this.handler.style.transform = `translate(${pointOnCircle(charge/(20/9) * 2, {x: 0, y: 0}, 17.5).x - 16}px, ${-pointOnCircle(charge/(20/9) * 2, {x: 0, y: 0}, 17.5).y}px)`;
+				this.handler.style.visibility = 'visible';
+			this.handler.style.opacity = '1';
+
+				if(charge == 0) {
+					this.locked = false;
+					this.secure = false;
+					return false;
+				}
+
+			this.j = setInterval(() => {
+
+				this.icon.style.transform = `rotate(${-charge/2.2}deg)`;
+				charge -= charge*0.1;
+				document.getElementById('volume-label').innerText = `Volumen: ${Math.round(this._charge)}`;	
+
+				if(charge <= .5) {
+
+				  clearInterval(this.j);
+				  this.icon.style.transform = 'rotate(0deg)';
+				  charge = 0;
+
+				}
+
+			}, 5);
+
+				let curve = new BezierCurve(pointOnCircle(charge/(20/9) * 2, {x: 0, y: 0}, 17.5).x - 16, -pointOnCircle(charge/(20/9) * 2, {x: 0, y: 0}, 17.5).y, map(charge, 0, 100, 0, 250)/2, -map(charge, 0, 100, 0, 125), map(charge, 0, 100, 0, 250), 0, map(charge, 0, 100, 0, 50));
+				let i = 0;
+				let points = curve.getPoints();
+
+				this.k = setInterval(() => {
+					if(i == points.length) {
+						clearInterval(this.k);
+						this.locked = false;
+						this.handler.style.transform = `translate(${curve.x2}px, ${curve.y2}px)`;
+						this.secure = false;
+						return true;
+					}
+					this.handler.style.transform = `translate(${points[i].x}px, ${points[i].y}px)`;
+					i++;
+				}, 1000/60);
+			}
+
+		  //Control de volumen
+		  build() {
+			let wu__svc__icon = this.new_element('div', {class: 'wu__svc__icon'}, '<svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115.3 115.3"><path d="M47.9,14.306L26,30.706H6c-3.3,0-6,2.7-6,6v41.8c0,3.301,2.7,6,6,6h20l21.9,16.4c4,3,9.6,0.2,9.6-4.8v-77 C57.5,14.106,51.8,11.306,47.9,14.306z"></path> <path d="M77.3,24.106c-2.7-2.7-7.2-2.7-9.899,0c-2.7,2.7-2.7,7.2,0,9.9c13,13,13,34.101,0,47.101c-2.7,2.7-2.7,7.2,0,9.899 c1.399,1.4,3.199,2,4.899,2s3.601-0.699,4.9-2.1C95.8,72.606,95.8,42.606,77.3,24.106z"></path> <path d="M85.1,8.406c-2.699,2.7-2.699,7.2,0,9.9c10.5,10.5,16.301,24.4,16.301,39.3s-5.801,28.8-16.301,39.3 c-2.699,2.7-2.699,7.2,0,9.9c1.4,1.399,3.2,2.1,4.9,2.1c1.8,0,3.6-0.7,4.9-2c13.1-13.1,20.399-30.6,20.399-49.2 c0-18.6-7.2-36-20.399-49.2C92.3,5.706,87.9,5.706,85.1,8.406z"></path></svg>');
+			let wu__svc__trajectory = this.new_element('div', {class: 'wu__svc__trajectory'});
+			let wu__svc__slider = this.new_element('div', {class: 'wu__svc__slider'});
+			let wu__svc__slider__handle = this.new_element('div', {class: 'wu_svc__slider__handle'});
+			let wu__svc__input = this.new_element('input', {type: 'hidden', name: 'volume', id: 'volume-input'});
+				this.handler = wu__svc__slider__handle;
+			wu__svc__slider.append(wu__svc__slider__handle);
+			wu__svc__slider.append(wu__svc__input);
+				this.input = wu__svc__input;
+				this.icon = wu__svc__icon;
+			this.children.push(wu__svc__icon);
+			this.element.append(wu__svc__icon);
+			// -----------------------------------
+				this.trajectory = wu__svc__trajectory;
+			this.children.push(wu__svc__trajectory);
+			this.element.append(wu__svc__trajectory);
+			// -----------------------------------
+				this.slider = wu__svc__slider;
+			this.children.push(wu__svc__slider);
+			this.element.append(wu__svc__slider);
+			// -----------------------------------
+		  }
+
+		  new_element(element, attrs, content) {
+			let _element = document.createElement(element);
+			for (var key in attrs) _element.setAttribute(key, attrs[key]);
+			if (content) _element.innerHTML = content;
+			return _element;
+		  }
+
+		  //Inicializa los elementos y eventos del control de volumen
+		  init() {
+				this.build();
+				this.icon.addEventListener('mousedown', () => this.charge());
+				this.icon.addEventListener('mouseup', () => this.release(this._charge));
+				this.icon.addEventListener('mouseleave', () => this.release(this._charge));
+				this.icon.addEventListener('touchstart', () => this.charge());
+				this.icon.addEventListener('touchend', () => this.release(this._charge));
+				this.icon.addEventListener('touchleave', () => this.release(this._charge));
+		  }
+		}
+		
+		//Inicializa el control de volumen en el elemento con clase "wu__svc"
+		const vc = new VolumeCatapult('.wu__svc');
+	</script>
+</body>
+</html>

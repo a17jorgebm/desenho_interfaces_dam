@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download creativo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700&amp;display=swap">
+    <style>
+       .dl-parachute {
+			/* Variables CSS para gestionar colores, posiciones, transformaciones y opacidades */
+			--color-text: #fff; /* Color del texto */
+			--color-icon: #ffff00; /* Color del icono (flecha y paracaídas) */
+			--color-line: #ffff00; /* Color de las líneas de progreso */
+			--svg-y: 0px; /* Posición vertical del SVG */
+			--arrow-x: 0px; /* Posición horizontal de la flecha */
+			--arrow-y: 2px; /* Posición vertical de la flecha */
+			--arrow-r: 0deg; /* Rotación de la flecha */
+			--line-opacity: 0; /* Opacidad de la línea de progreso */
+			--circle-opacity: 1; /* Opacidad del círculo que aparece al principio */
+			--parachute-o: 1; /* Opacidad del paracaídas */
+			--parachute-y: 0px; /* Posición vertical del paracaídas */
+			--parachute-s: 0; /* Escala del paracaídas */
+			--line-progress-o: 0; /* Opacidad de la línea de progreso cuando empieza la animación */
+			--line-progress: 260px; /* Longitud inicial de la línea de progreso */
+			--success-y: 12px; /* Posición vertical del texto de éxito */
+			--success-o: 0; /* Opacidad del texto de éxito */
+			--number-y: 12px; /* Posición vertical del número de progreso (0%) */
+			--number-o: 0; /* Opacidad del número de progreso */
+			
+			/* Estilo general del botón */
+			-webkit-tap-highlight-color: transparent; /* Elimina el efecto de resaltado en móviles */
+			-webkit-appearance: none; /* Elimina el estilo predeterminado de botones en navegadores */
+			outline: none; /* Sin borde cuando se enfoca */
+			background: none; /* Fondo transparente */
+			border: none; /* Sin borde */
+			padding: 0; /* Sin padding */
+			margin: 0; /* Sin margen */
+			cursor: pointer; /* Cambia el cursor a mano */
+			font-size: 14px; /* Tamaño de fuente */
+			font-weight: 600; /* Peso de fuente */
+			font-family: "Inter"; /* Familia de fuente */
+			position: relative; /* Elemento relativo para gestionar posicionamientos internos */
+			width: 120px; /* Anchura del botón */
+			height: 120px; /* Altura del botón */
+		}
+
+		.dl-parachute svg {
+			display: block; /* El SVG se muestra como bloque */
+			pointer-events: none; /* No permite interactuar con el SVG */
+		}
+
+		.dl-parachute svg.circle,
+		.dl-parachute svg.line {
+			/* Propiedades comunes para los SVG de círculo y línea */
+			width: 280px; /* Anchura de los SVG */
+			height: 124px; /* Altura */
+			position: absolute; /* Posicionamiento absoluto */
+			left: -80px; /* Se desplaza a la izquierda */
+			stroke-width: 3px; /* Grosor del trazo */
+			stroke-linecap: round; /* Las líneas tienen extremos redondeados */
+			stroke: var(--color-line); /* El color del trazo */
+			fill: none; /* Sin relleno */
+		}
+
+		.dl-parachute svg.circle {
+			/* Estilos específicos para el círculo */
+			top: -2px; /* Posición superior */
+			opacity: var(--circle-opacity); /* Opacidad dinámica */
+			transform: translateY(var(--svg-y)) rotate(180deg); /* Traslación y rotación del SVG */
+		}
+
+		.dl-parachute svg.line {
+			/* Estilos específicos para la línea */
+			height: 128px; /* Altura */
+			bottom: -65px; /* Posición inferior */
+			opacity: var(--line-opacity); /* Opacidad dinámica */
+		}
+
+		.dl-parachute svg.line .progress {
+			stroke-width: 6px; /* Grosor del trazo de progreso */
+			stroke-dasharray: 260px; /* Longitud del trazo para crear la animación */
+			opacity: var(--line-progress-o); /* Opacidad dinámica de la línea de progreso */
+			stroke-dashoffset: var(--line-progress); /* Controla el avance del trazo */
+		}
+
+		.dl-parachute .arrow {
+			/* Estilos para la flecha */
+			position: absolute; /* Posicionamiento absoluto */
+			left: 36px; /* Desplazamiento desde la izquierda */
+			top: 36px; /* Desplazamiento desde arriba */
+			transform: translate(var(--arrow-x), var(--arrow-y)) rotate(var(--arrow-r)); /* Transformaciones de la flecha */
+		}
+
+		.dl-parachute .arrow .base {
+			/* Estilo para la base de la flecha */
+			fill: var(--color-icon); /* Relleno con el color del icono */
+			width: 48px; /* Anchura */
+			height: 48px; /* Altura */
+		}
+
+		.dl-parachute .arrow .parachute {
+			/* Estilo para el paracaídas */
+			position: absolute; /* Posicionamiento absoluto */
+			width: 28px; /* Anchura del paracaídas */
+			height: 32px; /* Altura */
+			fill: var(--color-icon); /* Relleno del paracaídas */
+			left: 10px; /* Desplazamiento desde la izquierda */
+			bottom: -26px; /* Desplazamiento desde abajo */
+			transform-origin: 50% 0%; /* Punto de origen de la transformación (mitad superior) */
+			opacity: var(--parachute-o); /* Opacidad dinámica */
+			transform: translateY(var(--parachute-y)) scale(var(--parachute-s)); /* Traslación y escalado dinámico */
+		}
+
+		.dl-parachute .number,
+		.dl-parachute .success {
+			/* Estilos para el número de progreso y el texto de éxito */
+			position: absolute; /* Posicionamiento absoluto */
+			left: 0; /* Alineado a la izquierda */
+			right: 0; /* Alineado a la derecha */
+			top: var(--t, 144px); /* Posición superior con variable */
+			text-align: center; /* Texto centrado */
+			color: var(--color-text); /* Color del texto */
+			opacity: var(--o, var(--number-o)); /* Opacidad dinámica */
+			transform: translateY(var(--y, var(--number-y))); /* Traslación vertical dinámica */
+		}
+
+		.dl-parachute .success {
+			/* Estilos específicos para el texto de éxito */
+			--t: 12px; /* Posición superior */
+			--o: var(--success-o); /* Opacidad dinámica */
+			--y: var(--success-y); /* Posición vertical dinámica */
+		}
+
+		html {
+			box-sizing: border-box; /* Define cómo se calculan los tamaños */
+			-webkit-font-smoothing: antialiased; /* Mejora el renderizado de las fuentes */
+		}
+
+		* {
+			box-sizing: inherit; /* Todos los elementos usan el mismo modelo de caja */
+		}
+
+		body {
+			overflow: hidden; /* Sin scroll */
+			min-height: 100vh; /* Altura mínima de la pantalla */
+			font-family: "Inter"; /* Fuente de la página */
+			display: flex; /* Flexbox para centrar el contenido */
+			justify-content: center; /* Centrado horizontal */
+			align-items: center; /* Centrado vertical */
+			background: #000; /* Fondo negro */
+		}
+		 
+    </style>
+</head>
+
+<body>
+    <button class="dl-parachute">
+        <span class="success">Descarga finalizada</span>
+        <div class="arrow">
+            <svg class="base" viewBox="0 0 48 48">
+                <path
+                    d="M23.191 46.588C23.379 46.847 23.68 47 24 47C24.32 47 24.621 46.847 24.809 46.588L40.809 24.588C41.03 24.284 41.062 23.881 40.892 23.546C40.72 23.211 40.376 23 40 23H31V2C31 1.448 30.552 1 30 1H18C17.448 1 17 1.448 17 2V23H7.99999C7.62399 23 7.27999 23.211 7.10899 23.546C6.93799 23.881 6.96999 24.284 7.19199 24.588L23.191 46.588Z" />
+            </svg>
+            <svg class="parachute" viewBox="0 0 28 32">
+                <path
+                    d="M27.5 20.2542C26.9093 23.9345 24.4253 32 14 32C3.57466 32 1.09075 23.9345 0.5 20.2542L0.502764 19.04L12.756 0H15.244L27.4972 19.04C27.4972 19.4629 27.5 20.2542 27.5 20.2542ZM25.8243 19.0357L14.933 3.0248V18.5033C15.9843 18.5979 16.8727 18.8393 17.7587 19.0801C18.887 19.3867 20.0115 19.6923 21.4639 19.6923C22.9864 19.6923 24.6154 19.3565 25.8243 19.0357ZM13.067 18.5033V3.0248L2.17572 19.0357C3.38456 19.3565 5.01356 19.6923 6.5361 19.6923C7.98852 19.6923 9.113 19.3867 10.2413 19.0801C11.1273 18.8393 12.0157 18.5979 13.067 18.5033Z" />
+            </svg>
+        </div>
+        <svg class="circle" viewBox="0 0 280 124">
+            <path
+                d="M81.5 62C81.5006 29.6913 107.691 3.50059 140 3.5C172 3.5 198.505 30.1029 198.5 62C198.495 94.1709 172.67 120.225 140.5 120.5C108.054 120.777 81.4994 94.447 81.5 62Z" />
+        </svg>
+        <svg class="line" viewBox="0 0 280 128"></svg>
+        <span class="number"><span>0</span>%</span>
+    </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.0/gsap.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin3.min.js"></script>
+    <script>
+		// Registramos el plugin MorphSVGPlugin, necesario para animar las formas SVG.
+		gsap.registerPlugin(MorphSVGPlugin)
+
+		// Seleccionamos todos los botones con la clase '.dl-parachute'.
+		document.querySelectorAll('.dl-parachute').forEach(button => {
+			// Definimos las variables que referencian al círculo, la flecha y otros elementos del botón.
+			let circle = button.querySelector('.circle path'),  // El círculo que rodea el botón.
+				arrow = button.querySelector('.arrow path'),   // La flecha dentro del botón.
+				
+				// Definimos un objeto 'Proxy' para controlar la propiedad 'y' de la línea y actualizar el SVG cuando cambie.
+				line = new Proxy({
+					y: null
+				}, {
+					set(target, key, value) {
+						target[key] = value;
+						if (target.y !== null) {
+							// Cuando 'y' cambia, se actualiza la forma de la línea alrededor del botón.
+							button.querySelector('.line').innerHTML = getPath(target.y, .2);
+						}
+						return true;
+					},
+					get(target, key) {
+						return target[key];
+					}
+				}),
+				number = button.querySelector('.number span'),  // Elemento donde se mostrará el número del progreso.
+				count = { number: 0 };  // Variable para controlar el conteo (inicia en 0).
+			
+			line.y = 64.5;  // Inicializamos la propiedad 'y' de la línea.
+
+			// Añadimos un evento 'click' al botón.
+			button.addEventListener('click', e => {
+				e.preventDefault();  // Evitamos que el botón siga su acción predeterminada (ej. seguir un enlace).
+
+				// Si el botón ya está activo, no hacemos nada.
+				if (button.classList.contains('active')) {
+					return;
+				}
+
+				// Marcamos el botón como activo añadiendo la clase 'active'.
+				button.classList.add('active');
+
+				// Creamos una línea de tiempo con GSAP para encadenar varias animaciones.
+				gsap.timeline()
+					// Animamos la transformación del círculo, usando el plugin MorphSVGPlugin.
+					.to(circle, {
+						morphSVG: 'M10 120.5C11.5 120.5 29.1914 120.5 61.5 120.5C78.5 120.5 108.054 120.777 140.5 120.5C172.67 120.225 201.5 120.5 218.5 120.5C250.397 120.5 268.5 120.5 270 120.5',
+						duration: .15,  // Duración de la animación.
+						onComplete() {
+							// Al completar la animación, ocultamos el círculo y mostramos la línea.
+							gsap.set(button, {
+								'--circle-opacity': 0,
+								'--line-opacity': 1
+							});
+						}
+					})
+					// Animamos el movimiento de la flecha y del SVG en su eje vertical.
+					.to(button, {
+						'--svg-y': '120px',  // Desplazamos el SVG hacia abajo.
+						'--arrow-y': '44px',  // Movemos la flecha.
+						duration: .15
+					}, 0)
+					// Movemos la flecha hacia arriba.
+					.to(button, {
+						'--arrow-y': '-72px',
+						duration: .3,
+						ease: 'power1.out'
+					})
+					// Continuamos animando el progreso de la línea y otros elementos.
+					.to(button, {
+						'--arrow-y': '40px',  // La flecha vuelve a su posición.
+						'--line-progress': '0px',  // Reseteamos el progreso de la línea.
+						duration: 3,  // Duración de la animación.
+						delay: .15,  // Retraso antes de que comience.
+						onStart() {
+							// Cuando comienza la animación, mostramos el progreso de la línea.
+							gsap.to(button, {
+								'--line-progress-o': 1
+							});
+						}
+					})
+					// Animamos el conteo del número que se muestra en el botón (de 0 a 100).
+					.to(count, {
+						number: 100,  // Valor final del conteo.
+						roundProps: 'number',  // Redondeamos los números.
+						duration: 3,  // Duración de la animación.
+						onUpdate: () => number.innerHTML = count.number  // Actualizamos el texto del número.
+					}, .6)
+					// Animamos el paracaídas, haciéndolo desaparecer.
+					.to(button, {
+						'--parachute-o': 0,  // Ocultamos el paracaídas.
+						'--parachute-y': '12px',  // Lo movemos un poco.
+						duration: .2
+					})
+					// Movemos la flecha hacia abajo con un efecto elástico.
+					.to(button, {
+						'--arrow-y': '20px',
+						duration: .7,
+						ease: 'elastic.out(1, .8)'  // Efecto elástico.
+					});
+
+				// Mostramos el paracaídas y el número cuando la animación continúa.
+				gsap.to(button, {
+					'--parachute-s': 1,  // Escalamos el paracaídas.
+					'--number-o': 1,  // Mostramos el número.
+					'--number-y': '0px',  // Movemos el número a su posición original.
+					duration: .2,
+					delay: .4  // Añadimos un pequeño retraso.
+				});
+
+				// Animamos la rotación de la flecha en varias etapas para simular un movimiento realista.
+				gsap.to(button, {
+					ease: 'linear',  // Animación lineal para la flecha.
+					keyframes: [{
+						'--arrow-r': '190deg',  // Rotamos la flecha.
+						'--arrow-x': '-12px',  // Desplazamos la flecha horizontalmente.
+						duration: .6,
+						delay: .6
+					}, {
+						'--arrow-r': '170deg',
+						'--arrow-x': '12px',
+						duration: .6
+					}, {
+						'--arrow-r': '185deg',
+						'--arrow-x': '-6px',
+						duration: .7
+					}, {
+						'--arrow-r': '180deg',
+						'--arrow-x': '0px',
+						duration: .5
+					}]
+				});
+
+				// Establecemos la rotación final de la flecha.
+				gsap.to(button, {
+					'--arrow-r': '180deg',
+					duration: .3
+				});
+
+				// Animamos la línea utilizando diferentes puntos de control (keyframes).
+				gsap.to(line, {
+					keyframes: [{
+						y: 24,  // Movemos la línea hacia abajo.
+						duration: .15,
+						delay: .125
+					}, {
+						y: 64.5,  // La línea vuelve a su posición inicial.
+						duration: .8,
+						ease: 'elastic.out(1, .5)'  // Efecto elástico.
+					}]
+				});
+
+				// Mostramos el icono de "éxito" una vez que las animaciones terminan.
+				gsap.to(button, {
+					'--success-o': 1,  // Mostramos el ícono de éxito.
+					'--success-y': '0px',  // Lo movemos a su posición original.
+					duration: .25,
+					delay: 3.825  // Retraso para que aparezca después de la animación principal.
+				});
+
+				// Finalmente, morfeamos (transformamos) la flecha hacia una nueva forma de "check".
+				gsap.to(arrow, {
+					morphSVG: 'M28.5858 10.0503C29.3669 9.2692 30.6332 9.2692 31.4142 10.0503L42.5 21.136C43.8807 22.5167 43.8807 24.7553 42.5 26.136C41.1193 27.5168 38.8807 27.5167 37.5 26.136L31.4142 20.0502C30.6332 19.2692 29.3669 19.2692 28.5858 20.0503L10.5 38.136C9.11931 39.5167 6.88073 39.5168 5.50002 38.136C4.11931 36.7553 4.11931 34.5167 5.50002 33.136L28.5858 10.0503Z',
+					duration: .2,
+					delay: 3.8  // Se ejecuta al final.
+				});
+
+			});
+		});
+
+		// Función para calcular los puntos de control en la curva de Bézier.
+		function getPoint(point, i, a, smoothing) {
+			let cp = (current, previous, next, reverse) => {
+				let p = previous || current,
+					n = next || current,
+					o = {
+						length: Math.sqrt(Math.pow(n[0] - p[0], 2) + Math.pow(n[1] - p[1], 2)),
+						angle: Math.atan2(n[1] - p[1], n[0] - p[0])
+					},
+					angle = o.angle + (reverse ? Math.PI : 0),
+					length = o.length * smoothing;
+				return [current[0] + Math.cos(angle) * length, current[1] + Math.sin(angle) * length];
+			},
+			cps = cp(a[i - 1], a[i - 2], point, false),
+			cpe = cp(point, a[i - 1], a[i + 1], true);
+			return `C ${cps[0]},${cps[1]} ${cpe[0]},${cpe[1]} ${point[0]},${point[1]}`;
+		}
+
+		// Función para generar el SVG dinámico de la línea.
+		function getPath(update, smoothing) {
+			let points = [
+				[10, 64.5],
+				[140, update],
+				[270, 64.5]
+			],
+			d = points.reduce((acc, point, i, a) => i === 0 ? `M ${point[0]},${point[1]}` : `${acc} ${getPoint(point, i, a, smoothing)}`, '');
+			return `<path d="${d}" /><path class="progress" d="${d}" />`;
+		}
+	</script>
+</body>
+
+</html>
