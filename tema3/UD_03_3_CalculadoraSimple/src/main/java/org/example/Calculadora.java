@@ -7,12 +7,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.Locale;
 
 public class Calculadora {
-    private static final boolean START_IN_DARK_MODE=false;
-    private static final String ICON_URL_CALCULATOR="/icons/calculator.png";
-
     // Fondo de la calculadora
     private static final Color COLOR_FONDO_CALCULADORA = new Color(240, 240, 240);
 
@@ -46,13 +44,14 @@ public class Calculadora {
     private JTextField txtEntradaNumeros;
     private GridBagLayout gridBagLayout;
     private GridBagConstraints gbc;
+    private Operacion operacion;
 
     public Calculadora(){
-        this.isDarkMode = START_IN_DARK_MODE;
         this.ventana = new JFrame();
         this.txtEntradaNumeros = new JTextField();
         this.gridBagLayout = new GridBagLayout();
         this.gbc = new GridBagConstraints();
+        this.operacion=new Operacion();
     }
 
     public static void main(String[] args) {
@@ -104,9 +103,21 @@ public class Calculadora {
                         cambiarValoresGBC(gbc,0,0,1,1,1,1,GridBagConstraints.BOTH);
                         panelBotonesCompleto.add(panelBotonesBorrado,gbc);
                             JPanel botonC=getPanelWithButtonStyle("C",COLOR_BOTON_BORRAR,COLOR_BOTON_BORRAR_HOVER,COLOR_TEXTO_BORRAR);
+                            botonC.addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mouseClicked(MouseEvent e) {
+                                    deleteTxtContent();
+                                }
+                            });
                             cambiarValoresGBC(gbc,0,0,1,1,1,1,GridBagConstraints.BOTH,new Insets(2,2,2,2));
                             panelBotonesBorrado.add(botonC,gbc);
                             JPanel botonBorrarNumero=getPanelWithButtonStyle("<-",COLOR_BOTONES_OPERACIONES,COLOR_BOTONES_OPERACIONES_HOVER,COLOR_TEXTO_OPERACIONES);
+                            botonBorrarNumero.addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mouseClicked(MouseEvent e) {
+                                    borrarNumeroTxt();
+                                }
+                            });
                             cambiarValoresGBC(gbc,1,0,1,1,1,1,GridBagConstraints.BOTH,new Insets(2,2,2,2));
                             panelBotonesBorrado.add(botonBorrarNumero,gbc);
                         //botones numeros y operaciones
@@ -123,9 +134,16 @@ public class Calculadora {
                                 for (int i=1;i<10;i++){
                                     if (i==4 || i==7){
                                         gridy++;
-                                        gridx=0; //algo falla nesto
+                                        gridx=0;
                                     }
                                     JPanel numero=getPanelWithButtonStyle(String.valueOf(i),COLOR_BOTONES_NUMERICOS,COLOR_BOTONES_NUMERICOS_HOVER,COLOR_TEXTO_NUMERICOS);
+                                    final int valorNumero=i; //para poder acceder dentro
+                                    numero.addMouseListener(new MouseAdapter() {
+                                        @Override
+                                        public void mouseClicked(MouseEvent e) {
+                                            writeNumber(valorNumero);
+                                        }
+                                    });
                                     cambiarValoresGBC(gbc,gridx++,gridy,1,1,1,1,GridBagConstraints.BOTH,new Insets(2,2,2,2));
                                     panelNumeros.add(numero,gbc);
                                 }
@@ -136,7 +154,14 @@ public class Calculadora {
                             panelNumerosYOperaciones.add(panelOperaciones,gbc);
                                 String[] operacionesDisponibles={"+","-","*","/"};
                                 for (int i=0;i<operacionesDisponibles.length;i++){
+                                    final String simbolo=operacionesDisponibles[i];
                                     JPanel operacion=getPanelWithButtonStyle(operacionesDisponibles[i],COLOR_BOTONES_OPERACIONES,COLOR_BOTONES_OPERACIONES_HOVER,COLOR_TEXTO_OPERACIONES);
+                                    operacion.addMouseListener(new MouseAdapter() {
+                                        @Override
+                                        public void mouseClicked(MouseEvent e) {
+                                            addSimbolo(simbolo);
+                                        }
+                                    });
                                     cambiarValoresGBC(gbc,0,i+1,1,1,new Insets(2,2,2,2));
                                     panelOperaciones.add(operacion,gbc);
                                 }
@@ -147,10 +172,22 @@ public class Calculadora {
                         cambiarValoresGBC(gbc,0,5,1,1,1,1,GridBagConstraints.BOTH);
                         panelBotonesCompleto.add(panel0andEquals,gbc);
                             JPanel numero0=getPanelWithButtonStyle("0",COLOR_BOTONES_NUMERICOS,COLOR_BOTONES_NUMERICOS_HOVER,COLOR_TEXTO_NUMERICOS);
+                            numero0.addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mouseClicked(MouseEvent e) {
+                                    writeNumber(0);
+                                }
+                            });
                             cambiarValoresGBC(gbc,0,0,1,1,2,1,GridBagConstraints.BOTH,new Insets(2,2,2,2));
                             panel0andEquals.add(numero0,gbc);
 
                             JPanel operacionIgual=getPanelWithButtonStyle("=",COLOR_BOTON_IGUAL,COLOR_BOTON_IGUAL_HOVER,COLOR_TEXTO_IGUAL);
+                            operacionIgual.addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mouseClicked(MouseEvent e) {
+                                    calcularOperacion();
+                                }
+                            });
                             cambiarValoresGBC(gbc,2,0,1,1,2,1,GridBagConstraints.BOTH,new Insets(2,2,2,2));
                             panel0andEquals.add(operacionIgual,gbc);
 
@@ -161,7 +198,59 @@ public class Calculadora {
         });
     }
 
+    public void addSimbolo(String simbolo){
+        if (operacion.getNumero1()!=null || operacion.getNumero2()!=null) return;
+        String numeroCampoTexto=this.txtEntradaNumeros.getText();
+        if (numeroCampoTexto.isBlank()) return;
+
+        operacion.setNumero1(Long.valueOf(numeroCampoTexto));
+        operacion.setOperacion(simbolo.charAt(0));
+
+        deleteTxtContent();
+    }
+
+    public void writeNumber(int numero){
+        if (txtFieldExceedsLongitude()) return;
+        if (operacion.isCompletada()){
+            operacion.setCompletada(false);
+            deleteTxtContent();
+        }
+        String textoActual=this.txtEntradaNumeros.getText();
+        this.txtEntradaNumeros.setText(textoActual+numero);
+    }
+
+    public void calcularOperacion(){
+        if (operacion.isCompletada()) return;
+        String numero2=this.txtEntradaNumeros.getText();
+        if (numero2.isBlank()) return;
+        if (operacion.getNumero1()==null || operacion.getOperacion()==null) return;
+
+        operacion.setNumero2(Long.valueOf(numero2));
+
+        Float resultado= operacion.ejecutarOperacion();
+        operacion.resetearValores();
+        if (resultado!=null){
+            Locale.setDefault(Locale.FRANCE);
+            this.txtEntradaNumeros.setText(new DecimalFormat("#,##0.####").format(resultado));
+        }else {
+            this.txtEntradaNumeros.setText("Err");
+        }
+    }
     //UI ---------------------------------------------------------------------------------------------------------------------------------
+    public void deleteTxtContent(){
+        this.txtEntradaNumeros.setText("");
+    }
+
+    public void borrarNumeroTxt(){
+        String numerosTxt=this.txtEntradaNumeros.getText();
+        if (numerosTxt.isBlank()) return;
+        this.txtEntradaNumeros.setText(numerosTxt.substring(0,numerosTxt.length()-1));
+    }
+
+    public boolean txtFieldExceedsLongitude(){
+        return this.txtEntradaNumeros.getText().trim().length()>=19;
+    }
+
     public static JLabel createText(String texto,int tamano,Color colorTexto){
         JLabel label=new JLabel(texto);
         label.setForeground(colorTexto);
@@ -173,12 +262,7 @@ public class Calculadora {
         JPanel panel=new JPanel();
         panel.setLayout(new GridBagLayout());
         panel.setBackground(colorFondo);
-        GridBagConstraints gridBagConstraints=new GridBagConstraints();
-        cambiarValoresGBC(gridBagConstraints,0,0,1,1);
-        JLabel label=createText(text,20,colorTexto);
-        label.setVerticalAlignment(SwingConstants.CENTER);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.addMouseListener(new MouseAdapter() {
+        panel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
                 panel.setBackground(colorHover);
@@ -189,6 +273,11 @@ public class Calculadora {
                 panel.setBackground(colorFondo);
             }
         });
+        GridBagConstraints gridBagConstraints=new GridBagConstraints();
+        cambiarValoresGBC(gridBagConstraints,0,0,1,1,1,1,GridBagConstraints.NONE);
+        JLabel label=createText(text,20,colorTexto);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
         panel.add(label,gridBagConstraints);
         return panel;
     }
