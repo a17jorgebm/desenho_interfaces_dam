@@ -107,6 +107,7 @@ public class Calculadora {
                                 @Override
                                 public void mouseClicked(MouseEvent e) {
                                     deleteTxtContent();
+                                    Calculadora.this.operacion.resetearValores();
                                 }
                             });
                             cambiarValoresGBC(gbc,0,0,1,1,1,1,GridBagConstraints.BOTH,new Insets(2,2,2,2));
@@ -199,6 +200,7 @@ public class Calculadora {
     }
 
     public void addSimbolo(String simbolo){
+        if (operacion.isCompletada()) return;
         if (operacion.getNumero1()!=null || operacion.getNumero2()!=null) return;
         String numeroCampoTexto=this.txtEntradaNumeros.getText();
         if (numeroCampoTexto.isBlank()) return;
