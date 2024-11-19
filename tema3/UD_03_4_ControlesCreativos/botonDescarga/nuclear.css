@@ -1,0 +1,61 @@
+:root{
+    --fuente: 'Michroma', sans-serif;
+
+    --color-gris-claro: #646466;
+    --color-gris-medio: #454545;
+    --color-gris-oscuro: #242424;
+    --color-amarillo: #E8B338;
+    --color-naranja: #D66B0D;
+}
+
+body{
+    margin: 0;
+}
+
+body *{
+    font-family: var(--fuente)
+}
+
+main{
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100%;
+
+    background-color: var(--color-gris-medio);
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+button{
+    padding: 40px 80px;
+    font-weight: bold;
+    border-radius: 8px;
+    background-color: var(--color-naranja);
+    transition: scale 3s;
+    position: relative;
+    border: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button::after{
+    content: '';
+    position: absolute;
+    background-size: 400% 400%;
+    width: 107%;
+    height: 107%;
+    z-index: -1;
+    background-image: linear-gradient(to bottom right, var(--color-amarillo), var(--color-gris-oscuro));
+}
+
+button:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}
