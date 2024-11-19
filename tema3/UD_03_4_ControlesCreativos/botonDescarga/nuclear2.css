@@ -1,0 +1,66 @@
+:root{
+    --fuente: 'Michroma', sans-serif;
+
+    --color-gris-claro: #646466;
+    --color-gris-medio: #454545;
+    --color-gris-oscuro: #242424;
+    --color-amarillo: #E8B338;
+    --color-naranja: #D66B0D;
+}
+body{
+    margin: 0;
+}
+
+body *{
+    color: var(--color-gris-oscuro);
+    font-family: var(--fuente);
+    font-weight: bold;
+}
+
+main{
+    background-color: transparent;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#boton{
+    --border-width: 15px;
+    --border-radius: 15px;
+
+    background-color: var(--color-amarillo);
+    box-sizing: border-box;
+    padding: 50px 100px;
+    border-radius: var(--border-radius);
+
+ /* crea un contexto independiante de zindex, senon o after quedaba por detras do main(tamen se poderia inidcar z-index=1) */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &::after{
+        content: "";
+        position: absolute;
+        width: calc(100% + var(--border-width) * 2);
+        height: calc(100% + var(--border-width) * 2);
+        top: calc(-1 * var(--border-width));
+        left: calc(-1 * var(--border-width));
+        background: linear-gradient(
+            to bottom right,var(--color-amarillo),var(--color-gris-oscuro)
+        );
+        background-size: 300% 300%;
+        background-position: 0 50%;
+        border-radius: calc(var(--border-width) + var(--border-radius));
+        z-index: -1;
+        animation: moveFondo 0.5s alternate infinite;
+    }
+}
+
+@keyframes moveFondo {
+    50% {
+        background-position: 100% 50%;
+    }
+}
+

@@ -55,7 +55,3 @@ button::after{
     background-image: linear-gradient(to bottom right, var(--color-amarillo), var(--color-gris-oscuro));
 }
 
-button:hover{
-    cursor: pointer;
-    transform: scale(1.1);
-}
