@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ejemplo</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --fuente: 'Michroma', sans-serif;
+        }
+        body{
+            display: flex; /* o borde solo se ve se se pon esto xd, (Creates a New Block Formatting Context (BFC):) */
+            margin: 0;
+        }
+
+        main{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            z-index: 4;
+        }
+
+        #boton{
+            --border-width: 4px;
+
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 300px;
+            height: 200px;
+            font-family: var(--fuente);
+            font-size: 2rem;
+            color: white;
+            background-color: black;
+            background-size: 300%;
+            border-radius: 10px;
+
+            &::after{
+                position: absolute;
+                content: "";
+                width: calc(100% + var(--border-width) * 2);
+                height: calc(100% + var(--border-width) * 2);
+                background: linear-gradient(
+                    to bottom right,yellow, black
+                );
+                background-size: 300% 300%;
+                border-radius: 10px;
+                z-index: -1;
+                animation: mover-fondo 2s alternate infinite;
+                transition: transform 2s ease-in-out;
+            }
+        }
+
+        #boton:hover{
+            cursor: pointer;
+            transform: scale(1.1);
+        }
+
+        @keyframes mover-fondo{
+            50%{
+                background-position: 100% 50%;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <main>
+        <div id="boton">descargame</div>
+    </main>
+</body>
+</html>

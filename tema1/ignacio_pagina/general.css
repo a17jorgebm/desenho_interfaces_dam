@@ -1,0 +1,10 @@
+@font-face {
+    font-family: "Wallington Pro";
+    src: url(fonts/Wallington-Pro.woff) format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: "Wallington Pro", sans-serif;
+}
