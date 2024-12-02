@@ -19,6 +19,8 @@
     --size-14: 0.8750rem;
     --size-12: 0.75rem;
     --size-24: 1.5rem;
+
+    --margen-lateral: 15%;
 }
 
 body{
@@ -32,6 +34,8 @@ body{
     color: #1F1A16;
 }
 
+/* HEADER */
+
 header{
     box-sizing: border-box;
     width: 100%;
@@ -42,6 +46,8 @@ header{
 
     padding: 40px;
     border-bottom: 1px solid var(--gris-claro);
+
+    margin-bottom: 80px;
 }
 
 #menu-navegacion{
@@ -68,7 +74,12 @@ header{
     background-color: var(--gris-claro);
     transition: width 0.5s ease;
 }
-#menu-navegacion a:hover::after{
+#menu-navegacion a.pagina-actual::after{
+    width: 50%;
+    background-color: var(--negro-algo-claro);
+    opacity: 90%;
+}
+#menu-navegacion a:not(.pagina-actual):hover::after{
     width: 50%;
 }
 
@@ -83,3 +94,37 @@ header{
 #iconos-header .icon{
     fill: aqua;
 }
+
+
+
+/* FOOTER */
+footer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    background-color: var(--gris-claro);
+    font-size: var(--size-14);
+    position: relative;
+
+    margin-top: 100px;
+}
+
+#logos-footer{
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 10%;
+}
+
+#logos-footer .icon{
+    cursor: pointer;
+}
+
+
+

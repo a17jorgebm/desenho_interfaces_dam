@@ -1,0 +1,29 @@
+#main-pajaritas-destacadas{
+    margin: 0 var(--margen-lateral);
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+    .pajarita-destacada{
+        flex-grow: 1;
+
+        display: flex;
+        flex-direction: column;
+        height: 300px;
+        background-color: var(--gris-claro);
+    }
+
+        .pajarita-destacada .img-pajarita-destacada{
+            flex-grow: 0.6;
+        }
+            .pajarita-destacada .img-pajarita-destacada img{
+                object-fit: cover;
+            }
+
+        .pajarita-destacada .contenido-pajarita-destacada{
+            flex-grow: 0.4;
+        }
+
