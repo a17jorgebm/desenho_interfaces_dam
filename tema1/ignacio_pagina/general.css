@@ -12,9 +12,13 @@
     --negro-algo-claro: #1F1A16;
     --negro: #14110F;
 
-    --font-titulos: 'Wallington Pro', 'Times New Roman', Times, serif;
+    --gris-claro-con-opacity: rgba(233, 233, 233, 0.2);
+    --negro-50-opacity: rgba(0, 0, 0, 0.1);
+
+    --font-titulos: 'Playfair Display', 'Times New Roman', Times, serif;
     --font-general: 'Baskerville', 'Times New Roman', Times, serif;
 
+    --size-18: 1.15rem;
     --size-16: 1rem;
     --size-14: 0.8750rem;
     --size-12: 0.75rem;
@@ -24,12 +28,12 @@
 }
 
 body{
-    font-family: var(--font-general);
     margin: 0;
 }
 
 body * {
     box-sizing: border-box;
+    font-family: var(--font-general);
 }
 
 .titulo{

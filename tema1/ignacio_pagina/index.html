@@ -6,7 +6,8 @@
     <title>Document</title>
     <link rel="stylesheet" href="general.css">
     <link rel="stylesheet" href="index.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="js/index.js"></script>
 </head>
 <body>
     <header>
@@ -33,9 +34,10 @@
 
     <main>
         <section id="main-pajaritas-destacadas">
-            <div class="pajarita-destacada-grande">
+            <div class="pajarita-destacada-grande destacada" data-id="1">
                 <div class="img-pajarita-destacada">
                     <img src="img/pajaritas/azul_claro/azul_claro_sin_fondo.png"/>
+                    <img class="img-secundaria" src="img/pajaritas/azul_claro/azul_claro_hombre.png"/>
                 </div>
                 <div class="contenido-pajarita-destacada">
                     <span class="nombre-pajarita">Pajarita azul</span>
@@ -43,40 +45,78 @@
                     <span class="precio">30€</span>
                 </div>
             </div>
-            <div class="pajarita-destacada">
+            <div class="pajarita-destacada destacada" data-id="2">
                 <div class="img-pajarita-destacada">
                     <img src="img/pajaritas/roja/roja_sin_fondo.png"/>
+                    <img class="img-secundaria" src="img/pajaritas/roja/roja_hombre.png"/>
                 </div>
                 <div class="contenido-pajarita-destacada">
                     <span class="nombre-pajarita">Pajarita roja</span>
                     <span class="precio">30€</span>
                 </div>
             </div>
-            <div class="pajarita-destacada">
+            <div class="pajarita-destacada destacada" data-id="3">
                 <div class="img-pajarita-destacada">
-                    <img src="img/pajaritas/roja/roja_sin_fondo.png"/>
+                    <img src="img/pajaritas/azul/azul_sin_fondo.png"/>
+                    <img class="img-secundaria" src="img/pajaritas/azul/azul_hombre.png"/>
                 </div>
                 <div class="contenido-pajarita-destacada">
                     <span class="nombre-pajarita">Pajarita de puntos</span>
                     <span class="precio">30€</span>
                 </div>
             </div>
-            <div class="pajarita-destacada">
+            <div class="pajarita-destacada destacada" data-id="4">
                 <div class="img-pajarita-destacada">
-                    <img src="img/pajaritas/roja/roja_sin_fondo.png"/>
+                    <img src="img/pajaritas/marron/marron_sin_fondo.png"/>
+                    <img class="img-secundaria" src="img/pajaritas/marron/marron_hombre.png"/>
                 </div>
                 <div class="contenido-pajarita-destacada">
                     <span class="nombre-pajarita">Pajarita marron</span>
                     <span class="precio">30€</span>
                 </div>
             </div>
-            <div class="pajarita-destacada">
+            <div class="pajarita-destacada destacada" data-id="5">
                 <div class="img-pajarita-destacada">
-                    <img src="img/pajaritas/roja/roja_sin_fondo.png"/>
+                    <img src="img/pajaritas/naranja/naranja_sin_fondo.png"/>
+                    <img class="img-secundaria" src="img/pajaritas/naranja/naranja_hombre.png"/>
                 </div>
                 <div class="contenido-pajarita-destacada">
                     <span class="nombre-pajarita">Pajarita naranja</span>
                     <span class="precio">30€</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="foto-grande">
+            <img src="img/foto grande.jpg"/>
+        </section>
+
+        <section id="categorias">
+            <div class="titulo-seccion">Descubre nuestras categorías</div>
+            <div id="container-categorias">
+                <div class="categoria">
+                    <div class="img-categoria">
+                        <img src="img/pajaritas/tematicas/friki.png"/>
+                    </div>
+                    <div class="texto-categoria">Frikis</div>
+                </div>
+                <div class="categoria">
+                    <div class="img-categoria">
+                        <img src="img/pajaritas/tematicas/rayas.png"/>
+                    </div>
+                    <div class="texto-categoria">Rayas</div>
+                </div>
+                <div class="categoria">
+                    <div class="img-categoria">
+                        <img src="img/pajaritas/tematicas/navida.png"/>
+                    </div>
+                    <div class="texto-categoria">Navideñas</div>
+                </div>
+                <div class="categoria">
+                    <div class="img-categoria">
+                        <img src="img/pajaritas/tematicas/estampada.png"/>
+                    </div>
+                    <div class="texto-categoria">Estampadas</div>
                 </div>
             </div>
         </section>
