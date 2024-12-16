@@ -28,6 +28,10 @@ body{
     margin: 0;
 }
 
+body * {
+    box-sizing: border-box;
+}
+
 .titulo{
     font-family: var(--font-titulos);
     font-size: var(--size-24);
