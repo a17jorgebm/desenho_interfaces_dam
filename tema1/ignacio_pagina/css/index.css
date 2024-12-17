@@ -7,26 +7,17 @@
     gap: 20px;
 }
 
-    .precio{
-        font-weight: bold;
-        font-size: var(--size-14);
-    }
-
     .contenido-pajarita-destacada{
         padding: 20px;
-    }
-
-    .nombre-pajarita{
-        font-size: var(--size-18);
     }
 
     .pajarita-destacada-grande{
         display: flex;
         flex-direction: row;
-        flex-grow: 1;
+        flex-grow: 2;
         width: 60%;
 
-        height: 300px;
+        height: 400px;
         background-color: var(--gris-claro-con-opacity);
         cursor: pointer;
     }
@@ -55,7 +46,7 @@
         width: calc(33% - 40px);
         display: flex;
         flex-direction: column;
-        height: 300px;
+        height: 400px;
         /*background-color: var(--gris-claro);*/
         background-color: var(--gris-claro-con-opacity);
         cursor: pointer;
@@ -113,25 +104,6 @@
 #categorias{
     margin: 0 var(--margen-lateral);
 }
-
-    .titulo-seccion{
-        width: 100%;
-        font-size: var(--size-18);
-        font-family: var(--font-titulos);
-        display: flex;
-        justify-content: center;
-        position: relative;
-        margin-bottom: 30px;
-    }
-        .titulo-seccion::after{
-            content: '';
-            position: absolute;
-            height: 2px;
-            width: 30px;
-            background-color: black;
-            bottom: -10px;
-        }
-
     #container-categorias{
         width: 100%;
         display: flex;
@@ -143,7 +115,7 @@
             width: calc(25% - 15px);
             display: flex;
             flex-direction: column;
-            border: 0.1px solid var(--negro-50-opacity);
+            border: 0.1px solid var(--negro-10-opacity);
             background-color: var(--gris-claro-con-opacity);
             cursor: pointer;
             transition: transform 0.5s ease-in-out;

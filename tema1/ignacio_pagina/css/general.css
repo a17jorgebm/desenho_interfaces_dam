@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Wallington Pro";
-    src: url(fonts/Wallington-Pro.woff) format("woff");
+    src: url(../fonts/Wallington-Pro.woff) format("woff");
     font-weight: normal;
     font-style: normal;
 }
@@ -13,7 +13,8 @@
     --negro: #14110F;
 
     --gris-claro-con-opacity: rgba(233, 233, 233, 0.2);
-    --negro-50-opacity: rgba(0, 0, 0, 0.1);
+    --negro-10-opacity: rgba(0, 0, 0, 0.1);
+    --negro-80-opacity: rgba(0, 0, 0, 0.8);
 
     --font-titulos: 'Playfair Display', 'Times New Roman', Times, serif;
     --font-general: 'Baskerville', 'Times New Roman', Times, serif;
@@ -133,6 +134,35 @@ footer{
 #logos-footer .icon{
     cursor: pointer;
 }
+
+
+/* clases comunes */
+.nombre-pajarita{
+    font-size: var(--size-18);
+}
+.precio{
+    font-weight: bold;
+    font-size: var(--size-14);
+    font-family: var(--font-titulos);
+}
+
+.titulo-seccion{
+    width: 100%;
+    font-size: var(--size-18);
+    font-family: var(--font-titulos);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 30px;
+}
+    .titulo-seccion::after{
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 30px;
+        background-color: black;
+        bottom: -10px;
+    }
 
 
 

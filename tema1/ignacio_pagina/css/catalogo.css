@@ -1,0 +1,130 @@
+#cuerpo-catalogo{
+    margin: 0 5%;
+    width: calc(100% - 10%) ;
+
+    display: flex;
+    flex-direction: row;
+}
+        .cabecera-catalogo{
+            padding: 10px 25px;
+            font-size: var(--size-18);
+            font-family: var(--font-titulos);
+            position: relative;
+        }
+
+    #filtros{
+        width: 20%;
+    }
+        #filtros .cabecera-catalogo::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            height: 0.2px;
+            width: 100%;
+            background-color: black;
+        }
+        .contenedor-filtros{
+            padding: 10px 25px;
+            margin-top: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+            .wrapper-tipo-filtro{
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+                .cabecera-tipo-filtro{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+                    .cabecera-tipo-filtro *{
+                        font-size: var(--size-16);
+                        color: var(--negro-80-opacity);
+                    }
+                    .linea-filtro-ocultar-mostrar{
+                        width: 10px;
+                        height: 1px;
+                        background-color: var(--negro-80-opacity);
+                        position: relative;
+                        transition: transform 1s ease-in-out;
+                    }
+                    .linea-filtro-ocultar-mostrar::after{
+                        content: '';
+                        position: absolute;
+                        width: 10px;
+                        height: 1px;
+                        background-color: var(--negro-80-opacity);
+                        transition: transform 1s ease-in-out;
+                    }
+                    .linea-filtro-ocultar-mostrar.closed{ /* rotoo para que faga un + */
+                        transform: rotate(-90deg);
+                    }
+                    .linea-filtro-ocultar-mostrar.closed::after{ /* volvo a rotar o after para que quede ao contrario que o pai */
+                        transform: rotate(90deg);
+                    }
+                .opciones-tipo-filtro{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    transition: height 1s ease-in-out;
+                }
+                .opciones-tipo-filtro.oculto{
+                    height: 0;
+                    display: none;
+                }
+                    .opcion-filtro{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        align-items: center;
+                    }
+                        .opcion-filtro *{
+                            font-size: var(--size-14);
+                        }
+                        .nombre-e-icono-filtro{
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 10px;
+                        }
+                            .icono-opcion-filtro{
+                                height: 15px;
+                                width: 15px;
+                                position: relative;
+                            }
+                                /* para iconos */
+                                .icono-opcion-filtro img{
+                                    height: 100%;
+                                    width: 100%;
+                                    object-fit: cover;
+                                }
+                                /* para colores */
+                                .color-icono-filtro{
+                                    height: 100%;
+                                    width: 100%;
+                                }
+                                    #color-amarillo{
+                                        background-color: #e5d15d;
+                                    }
+                                    #color-rojo{
+                                        background-color: #e55d5d;
+                                    }
+                                    #color-verde{
+                                        background-color: #b1e3bc;
+                                    }
+                                    #color-azul{
+                                        background-color: #5dc8e5;
+                                    }
+
+
+
+
+    #productos-catalogo{
+        width: 80%;
+        background-color: cornflowerblue;
+    }

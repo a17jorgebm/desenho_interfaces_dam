@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/general.css">
+    <link rel="stylesheet" href="css/catalogo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="js/catalogo.js"></script>
+</head>
+<body>
+<header>
+    <div id="logo-empresa" class="titulo">
+        Mi pajarita nueva
+    </div>
+    <nav id="menu-navegacion">
+        <a href="index.html" class="item-menu-navegacion">Inicio</a>
+        <a href="" class="item-menu-navegacion pagina-actual">Catálogo</a>
+        <a href="about.html" class="item-menu-navegacion">Quienes somos</a>
+        <a href="" class="item-menu-navegacion">Contacto</a>
+    </nav>
+    <div id="iconos-header">
+        <div class="icon">
+            <img src="img/icons/user.svg">
+        </div>
+        <div class="icon">
+            <img src="img/icons/cart.svg">
+        </div>
+    </div>
+</header>
+
+
+<main>
+    <section id="cuerpo-catalogo">
+        <div id="filtros">
+            <div class="cabecera-catalogo">
+                <span>Filtros</span>
+            </div>
+            <!-- colores -->
+            <div class="contenedor-filtros">
+                <div id="filtro-tipo" class="wrapper-tipo-filtro">
+                    <div class="cabecera-tipo-filtro">
+                        <span>Tipo</span>
+                        <div class="linea-filtro-ocultar-mostrar"></div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+
+                                </div>
+                                <span class="nombre-opcion-filtro">
+                                Frikis
+                            </span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">(8)</span>
+                        </div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+
+                                </div>
+                                <span class="nombre-opcion-filtro">Rayas</span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (3)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+
+                                </div>
+                                <span class="nombre-opcion-filtro">Navideñas</span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (1)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+
+                                </div>
+                                <span class="nombre-opcion-filtro">Estampadas</span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (2)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="filtro-colores" class="wrapper-tipo-filtro">
+                    <div class="cabecera-tipo-filtro">
+                        <span>Colores</span>
+                        <div class="linea-filtro-ocultar-mostrar"></div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+                                    <div id="color-amarillo" class="color-icono-filtro"></div>
+                                </div>
+                                <span class="nombre-opcion-filtro">
+                                Amarillo
+                            </span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (8)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+                                    <div id="color-rojo" class="color-icono-filtro"></div>
+                                </div>
+                                <span class="nombre-opcion-filtro">
+                                Rojo
+                            </span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (3)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+                                    <div id="color-verde" class="color-icono-filtro"></div>
+                                </div>
+                                <span class="nombre-opcion-filtro">
+                                Verde
+                            </span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (1)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+                                    <div id="color-azul" class="color-icono-filtro"></div>
+                                </div>
+                                <span class="nombre-opcion-filtro">
+                                Azul
+                            </span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (2)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div id="filtro-materiales" class="wrapper-tipo-filtro">
+                    <div class="cabecera-tipo-filtro">
+                        <span>Material</span>
+                        <div class="linea-filtro-ocultar-mostrar"></div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+                                    <img src="img/icons/algodon.svg">
+                                </div>
+                                <span class="nombre-opcion-filtro">
+                                Algodón
+                            </span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (13)
+                            </span>
+                        </div>
+                    </div>
+                    <div class="opciones-tipo-filtro">
+                        <div class="opcion-filtro">
+                            <div class="nombre-e-icono-filtro">
+                                <div class="icono-opcion-filtro">
+                                    <img src="img/icons/hilo.svg">
+                                </div>
+                                <span class="nombre-opcion-filtro">
+                                Lino
+                            </span>
+                            </div>
+                            <span class="numero-productos-opcion-filtro">
+                                (3)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="productos-catalogo">
+            <div class="cabecera-catalogo">
+                <span>16 productos</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+<footer>
+    © 2024 Mi Pajarita Nueva | Aviso Legal | Política de Cookies
+    <div id="logos-footer">
+        <div class="icon">
+            <img src="img/icons/facebook.svg">
+        </div>
+        <div class="icon">
+            <img src="img/icons/instagram.svg">
+        </div>
+    </div>
+</footer>
+</body>
+</html>
