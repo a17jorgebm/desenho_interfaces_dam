@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="UD_03_3_CalculadoraSimple:jar">
+    <output-path>$PROJECT_DIR$/..</output-path>
+    <root id="archive" name="UD_03_3_CalculadoraSimple.jar">
+      <element id="module-output" name="UD_03_3_CalculadoraSimple" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/formdev/flatlaf/3.5.2/flatlaf-3.5.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
