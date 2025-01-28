@@ -7,11 +7,12 @@
     <link rel="stylesheet" href="css/general.css">
     <link rel="stylesheet" href="css/pajarita.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="js/general.js"></script>
 </head>
 <body>
 <header>
     <div id="logo-empresa" class="titulo">
-        Mi pajarita nueva
+        <a href="index.html">Mi pajarita nueva</a>
     </div>
     <nav id="menu-navegacion">
         <a href="index.html" class="item-menu-navegacion">Inicio</a>
@@ -23,15 +24,171 @@
         <div class="icon">
             <img src="img/icons/user.svg">
         </div>
-        <div class="icon">
+        <div class="icon" id="open-shop-cart">
             <img src="img/icons/cart.svg">
         </div>
     </div>
 </header>
 
 
+<div id="message-product-added-to-cart">
+    Producto añadido a la cesta
+</div>
+
+<section id="shop-cart">
+    <header id="shop-cart-header">
+        <span>CESTA (3)</span>
+        <div class="icon" id="close-shop-cart">
+            <img src="img/icons/close_svgrepo.com.svg">
+        </div>
+    </header>
+    <div id="shop-cart-products">
+        <div class="cart-product">
+            <div class="cart-product-img">
+                <a href="pajarita.html">
+                    <img src="img/pajaritas/azul/azul_sin_fondo.png">
+                </a>
+            </div>
+            <div class="cart-product-data">
+                <div class="cart-product-data-text">
+                    <div class="nombre-pajarita">
+                        Pajarita azul
+                    </div>
+                    <div class="precio">
+                        30€
+                    </div>
+                </div>
+                <div class="cart-product-data-add-delete">
+                    <div class="item-quantity-button">
+                        <img src="img/icons/increase.svg">
+                    </div>
+                    <div class="item-quantity">4</div>
+                    <div class="item-quantity-button">
+                        <img src="img/icons/decrease.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-product">
+            <div class="cart-product-img">
+                <a href="pajarita.html">
+                    <img src="img/pajaritas/azul/azul_sin_fondo.png">
+                </a>
+            </div>
+            <div class="cart-product-data">
+                <div class="cart-product-data-text">
+                    <div class="nombre-pajarita">
+                        Pajarita azul
+                    </div>
+                    <div class="precio">
+                        30€
+                    </div>
+                </div>
+                <div class="cart-product-data-add-delete">
+                    <div class="item-quantity-button">
+                        <img src="img/icons/increase.svg">
+                    </div>
+                    <div class="item-quantity">4</div>
+                    <div class="item-quantity-button">
+                        <img src="img/icons/decrease.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-product">
+            <div class="cart-product-img">
+                <a href="pajarita.html">
+                    <img src="img/pajaritas/azul/azul_sin_fondo.png">
+                </a>
+            </div>
+            <div class="cart-product-data">
+                <div class="cart-product-data-text">
+                    <div class="nombre-pajarita">
+                        Pajarita azul
+                    </div>
+                    <div class="precio">
+                        30€
+                    </div>
+                </div>
+                <div class="cart-product-data-add-delete">
+                    <div class="item-quantity-button">
+                        <img src="img/icons/increase.svg">
+                    </div>
+                    <div class="item-quantity">4</div>
+                    <div class="item-quantity-button">
+                        <img src="img/icons/decrease.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-product">
+            <div class="cart-product-img">
+                <a href="pajarita.html">
+                    <img src="img/pajaritas/azul/azul_sin_fondo.png">
+                </a>
+            </div>
+            <div class="cart-product-data">
+                <div class="cart-product-data-text">
+                    <div class="nombre-pajarita">
+                        Pajarita azul
+                    </div>
+                    <div class="precio">
+                        30€
+                    </div>
+                </div>
+                <div class="cart-product-data-add-delete">
+                    <div class="item-quantity-button">
+                        <img src="img/icons/increase.svg">
+                    </div>
+                    <div class="item-quantity">4</div>
+                    <div class="item-quantity-button">
+                        <img src="img/icons/decrease.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-product">
+            <div class="cart-product-img">
+                <a href="pajarita.html">
+                    <img src="img/pajaritas/azul/azul_sin_fondo.png">
+                </a>
+            </div>
+            <div class="cart-product-data">
+                <div class="cart-product-data-text">
+                    <div class="nombre-pajarita">
+                        Pajarita azul
+                    </div>
+                    <div class="precio">
+                        30€
+                    </div>
+                </div>
+                <div class="cart-product-data-add-delete">
+                    <div class="item-quantity-button">
+                        <img src="img/icons/increase.svg">
+                    </div>
+                    <div class="item-quantity">4</div>
+                    <div class="item-quantity-button">
+                        <img src="img/icons/decrease.svg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="shop-cart-resume">
+        <div id="shop-cart-total">
+            <div class="shop-cart-total-price">
+                TOTAL <span class="precio">33€</span>
+            </div>
+            <div class="shop-cart-total-price-taxes">*Impuestos incluídos</div>
+        </div>
+        <div id="shop-cart-continue-button">
+            Continuar
+        </div>
+    </div>
+</section>
+
 <main>
-    <span id="helper-localizacion">Catálogo / Pajarita azul clarito</span>
+    <span id="helper-localizacion"><a href="catalogo.html" class="link-helper">Catálogo</a>  / Pajarita azul clarito</span>
     <section class="producto">
         <div class="imagenes-producto">
             <div class="img-grande">

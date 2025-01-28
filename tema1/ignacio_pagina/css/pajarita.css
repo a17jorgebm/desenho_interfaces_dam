@@ -3,6 +3,11 @@
     color: var(--negro-80-opacity);
     font-size: var(--size-14);
 }
+    .link-helper{
+        text-decoration: underline;
+        color: black;
+
+    }
 .producto{
     display: flex;
     flex-direction: row;
