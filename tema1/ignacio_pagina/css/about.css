@@ -53,7 +53,7 @@ main *{
         #img-equipo{
             height: 350px;
             width: 70%;
-            justify-self: right;
+            float: right;
         }
          #img-equipo img{
              width: 100%;

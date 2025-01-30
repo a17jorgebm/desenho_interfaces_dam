@@ -1,0 +1,88 @@
+#info-and-contact{
+    margin: 50px 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    height: 55vh;
+}
+    .contact-info{
+        display: flex;
+        flex-direction: row;
+    }
+        .schedule-time{
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+        }
+            .schedule-time-text{
+                width: 40%;
+            }
+        .phone-and-email{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+        }
+            .contact-info-field{
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+            }
+
+    #formulario{
+        display: flex;
+        flex-direction: column;
+        flex: 1 0 40%;
+        position: relative;
+    }
+    #formulario form{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+        .txt-form{
+            background-color: var(--gris-claro);
+            border: none;
+            border-bottom: 1px solid var(--gris-oscuro);
+            padding: 15px;
+            font-family: var(--font-general);
+            resize: none;
+            opacity: 0.5;
+            transition: color 0.5s ease-in-out;
+        }
+        #contacto-message{
+            height: 4.5rem;
+        }
+        #formulario .txt-form:focus{
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            outline: none;
+            opacity: 1;
+        }
+        #btn-enviar-datos-contacto{
+            border: 0;
+            padding: 20px 10px;
+            cursor: pointer;
+            background-color: var(--negro);
+            color: var(--blanco);
+        }
+            #btn-enviar-datos-contacto:hover{
+                transform: scale(1.02);
+            }
+        .campo-incompleto{
+            border-bottom: 1px solid var(--rojo-aviso);
+            color: var(--rojo-aviso);
+        }
+        .campo-incompleto::placeholder{
+            color: var(--rojo-aviso);
+        }
+        #error-message{
+            font-size: var(--size-12);
+            color: var(--rojo-aviso);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+            .opacidad-1{
+                opacity: 1!important;
+            }

@@ -11,6 +11,8 @@
     --gris-oscuro: #5B5ASF;
     --negro-algo-claro: #1F1A16;
     --negro: #14110F;
+    --rojo-aviso: #A62927;
+
 
     --gris-claro-con-opacity: rgba(233, 233, 233, 0.2);
     --negro-10-opacity: rgba(0, 0, 0, 0.1);
@@ -279,6 +281,9 @@ footer{
                 display: flex;
                 justify-content: space-between;
             }
+                .shop-cart-total-price .precio{
+                    margin: 0;
+                }
             .shop-cart-total-price-taxes{
                 font-size: var(--size-12);
             }
