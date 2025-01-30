@@ -12,4 +12,17 @@ document.addEventListener('DOMContentLoaded',(e)=>{
             }
         }
     })
+
+
+
+    // categorias
+    let containerCategorias = document.getElementById('container-categorias')
+
+    containerCategorias.addEventListener('click', (e) => {
+        let clickeado = e.target.closest('.categoria')
+        if (clickeado){
+            window.location.href = "catalogo.html"
+        }
+
+    })
 })

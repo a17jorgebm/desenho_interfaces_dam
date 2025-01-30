@@ -14,7 +14,6 @@
 
         /* adding product to cart */
         let addProductButtons = document.querySelectorAll('.add-cart')
-        console.log(addProductButtons)
         let messageProductAdded = document.getElementById('message-product-added-to-cart')
         addProductButtons.forEach(button => {
             button.addEventListener('click', ()=>{
