@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Películas</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.23/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+<h2>Lista de Películas</h2>
+<button id="exportarPDF">Exportar a PDF</button>
+<table id="tablaPeliculas" class="display" style="width:100%">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Género</th>
+        <th>Año</th>
+        <th>Director</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Se generarán filas dinámicamente -->
+    </tbody>
+</table>
+<canvas id="graficoGeneros" width="400" height="200"></canvas>
+<script>
+    $(document).ready(function () {
+        let peliculas = [];
+        let generos = ['Acción', 'Comedia', 'Drama', 'Ciencia Ficción', 'Terror', 'Aventura'];
+        let generoDistribucion = {
+            'Acción': 70,
+            'Comedia': 45,
+            'Drama': 60,
+            'Ciencia Ficción': 55,
+            'Terror': 90,
+            'Aventura': 80
+        };
+        let generoCount = { 'Acción': 0, 'Comedia': 0, 'Drama': 0, 'Ciencia Ficción': 0, 'Terror': 0, 'Aventura': 0 };
+
+        let generoKeys = Object.keys(generoDistribucion);
+        let totalPeliculas = 500;
+        let index = 0;
+        for (let i = 1; i <= totalPeliculas; i++) {
+            let genero = generoKeys[index];
+            if (generoCount[genero] >= generoDistribucion[genero]) {
+                index = (index + 1) % generoKeys.length;
+                genero = generoKeys[index];
+            }
+            peliculas.push([i, `Película ${i}`, genero, 1980 + (i % 44), `Director ${i}`]);
+            generoCount[genero]++;
+        }
+
+        let table = $('#tablaPeliculas').DataTable({
+            data: peliculas,
+            columns: [
+                { title: "ID" },
+                { title: "Título" },
+                { title: "Género" },
+                { title: "Año" },
+                { title: "Director" }
+            ]
+        });
+
+        // Generar gráfico de géneros con colores distintos
+        let ctx = document.getElementById('graficoGeneros').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: Object.keys(generoCount),
+                datasets: [{
+                    label: 'Cantidad de Películas por Género',
+                    data: Object.values(generoCount),
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 206, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)'
+                    ]
+                }]
+            }
+        });
+
+        $('#exportarPDF').click(function () {
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF();
+            doc.text("Informe de Películas", 10, 10);
+            doc.text("Resumen de datos:", 10, 20);
+            doc.text(`Total de películas: ${totalPeliculas}`, 10, 30);
+            let y = 40;
+            Object.keys(generoCount).forEach(genero => {
+                doc.text(`${genero}: ${generoCount[genero]} películas`, 10, y);
+                y += 10;
+            });
+
+            doc.autoTable({
+                head: [['ID', 'Título', 'Género', 'Año', 'Director']],
+                body: table.rows({ search: 'applied' }).data().toArray(),
+                startY: y + 10
+            });
+            doc.save("Peliculas.pdf");
+        });
+    });
+</script>
+</body>
+</html>
